@@ -1,0 +1,26 @@
+\section{Conclusion and future work\label{sec:conclusion}}
+We have presented a web-based visual analytics environment, termed TimeTubesX, for the detailed analysis of blazar datasets. %on top of our previous version of TimeTubes.
+% Our system incorporates our prior work on 3D visualization of blazar data~\cite{Fujishiro2018} and further provides automatic feature extraction methods and dynamic visual queries that allow users to efficiently identify observable behaviors or recurring features from long-term datasets. 
+% We introduced a novel query specification framework for time-dependent, multi-dimensional data. Users can refine a query iteratively to find interesting patterns through a fact-driven querying process.
+TimeTubesX has significantly improved astronomers' analysis of 
+% multi-dimensional, time-dependent blazar datasets
+photometric and polarimetric behaviors of blazars
+by providing automatic feature extraction and dynamic visual querying.
+It allows astronomers not only to easily locate observable blazar behaviors but also to efficiently find recurring time variation patterns.
+TimeTubesX has the potential to allow astronomers to notice short time variation patterns that have not yet been discovered.
+
+% The feature and pattern detection in TimeTubesX still has some limitations.
+% % First, our automatic feature extraction allows users to analyze long-term datasets and obtain candidates for characteristic behaviors, but our system cannot distinguish outliers from flares and it can miss rotations that include outliers.
+% First, our automatic feature extraction cannot distinguish outliers from flares and it can miss rotations that include outliers.
+% In the future, we should take the observation errors into account during the feature extraction processes to alleviate this problem. 
+% % We currently do not take the observation errors into account during the feature extraction processes, which would alleviate this problem.
+% Second, analyses based on user-driven dynamic visual querying can be biased because the query specification process in QBE and QBS significantly depends on users' experiences and expertise.
+% Incorporating deep learning will be able to address this problem by classifying time series in non-biased manner.
+% Finally, to give a more effective overview of the results, it would be helpful to cluster the results of a query, similar to the approach by Bernard et al.~\cite{Bernard2010}.
+
+In the future, 
+to distinguish outliers from flares and in order not to miss rotations that include outliers,
+we should take the observation errors into account during the feature extraction processes. 
+Furthermore, we would like to incorporate a deep learning approach to classifying time series data in a non-biased manner because the current query specification process in QBE and QBS significantly depends on users' experiences and expertise.
+To give a more effective overview of the results, it will also be helpful to cluster the results of a query. %, similar to the approach by Bernard et al.~\cite{Bernard2010}.
+Applying TimeTubesX to multi-dimensional, time-dependent datasets in other domains will likely be yet another part of our future research.

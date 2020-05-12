@@ -1,0 +1,64 @@
+% \begin{figure*}[tb]
+%     \centering
+%     \includegraphics[width=.84\linewidth]{vgtc_journal_latex/figures/GUIwide.pdf}
+%     \caption{User interface of the feature extraction. (a)~Query specification panel. The panel with the automatic feature extraction is illustrated in (A), one with query-by-example in (B), and one with query-by-sketch in (C); (b)~Parameters for ranking, filtering, and displaying extraction results and a histogram summarizing distance distribution of extraction results; (c)~The timeline overviewing displayed extraction results; (d)~Detailed information panel for a selected result; (e)~A collection of thumbnails for extraction results; (f)~Summary of imported previous extraction results.}
+%     \label{fig:UIFeatureExtraction}
+% \end{figure*}
+\begin{figure}[t]
+    \begin{minipage}{\columnwidth}
+        \begin{center}
+            \includegraphics[width=.99\linewidth]{vgtc_journal_latex/figures/GUI.pdf}
+        \end{center}
+        \begin{minipage}{\columnwidth}
+        \caption{
+        User interface for the interactive feature analysis. (A)~Query specification panel; (B)~Parameters for ranking, filtering, and displaying extraction results and a histogram for the distribution of distances returned by the similarity search; (C)~Timelines overviewing displayed extraction results; (D)~Detailed information panel for a selected result; (E)~A collection of thumbnails for extraction results; and (F)~Summary of imported previous extraction results.}
+        \label{fig:UIFeatureExtraction}
+        \end{minipage}
+    \end{minipage}
+    % \hspace{10pt}\begin{minipage}{\columnwidth}
+    %     \begin{center}
+    %         \includegraphics[width=.99\linewidth]{vgtc_journal_latex/figures/QuerySpecificationPanel.pdf}
+    %     \end{center}
+    %     \begin{minipage}{\columnwidth}
+    %     \caption{User interface for feature extraction and dynamic visual queries. Automatic feature extraction is illustrated in (A).
+    %     , one with query-by-example in (B), and one with query-by-sketch in (C). 
+    %     To query-by-example (B), users select a time interval in the TimeTubes or scatterplots views (2) and can check the selected time interval in a 3D tube view and further fine-tune query parameters (1). %The current query is shown as 3D tube an can be fine-tuned  (2). 
+    %     To query-by sketch (C), users draw a SOI (1) and can adjust variables at each control point of the hand-drawn sketch (2) or adjust general sketch pad settings (3).}
+    %     \label{fig:querySpecificationPanel}
+    %     \end{minipage}
+    % \end{minipage}
+\end{figure}
+\begin{figure}[t]
+    \begin{minipage}{\columnwidth}
+        \begin{center}
+            \includegraphics[width=.99\linewidth]{vgtc_journal_latex/figures/QuerySpecificationPanel.pdf}
+        \end{center}
+        \begin{minipage}{\columnwidth}
+        \caption{Query specification panels for feature and pattern detection methods. (A) Automatic feature extraction; (B) Query-by-example. Users can check the selected time interval in a 3D tube view and further fine-tune query parameters (1) after they select a time interval in the TimeTubes or scatterplots views (2);
+        % users select a time interval in the TimeTubes or scatterplots views (2) and can check the selected time interval in a 3D tube view and further fine-tune query parameters (1). %The current query is shown as 3D tube an can be fine-tuned  (2). 
+         and (C) Query-by-sketch. Users draw a SOI (3) and can assign filtering constraints at each control point of the hand-drawn sketch (4) or adjust general sketch pad settings (5).}
+        \label{fig:querySpecificationPanel}
+        \end{minipage}
+    \end{minipage}
+\end{figure}
+\begin{figure}[t]
+    \centering
+    \vspace{3mm}
+    \includegraphics[width=.8\linewidth]{vgtc_journal_latex/figures/synthesisDataLightCurveLabel.png}\\
+    \footnotesize{\sf (a) Light curve plot. The four red diamonds indicate peaks in the data.}\\
+    \includegraphics[width=.83\linewidth]{vgtc_journal_latex/figures/synthesisDataStokesLabel.png}\\
+    \footnotesize{\sf (b) Stokes plane plot. The red diamonds indicate the peaks in (a).}
+    \caption{Conventional light curve plots and stokes plane for our synthetic dataset. The data includes three small circular patterns (red), three big rotations (green), and three narrow/rough-edged patterns (blue) within 365 days. Data starts from a square mark and ends at a triangular mark.}
+    \label{fig:synthesisData}
+\end{figure}
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=.99\linewidth]{vgtc_journal_latex/figures/QuerySpecificationPanel.pdf}
+%     \caption{Caption}
+%     \label{fig:my_label2}
+% \end{figure}
+\input{vgtc_journal_latex/sections/automaticExtraction.tex}
+\input{vgtc_journal_latex/sections/visualQuery.tex}
+\input{vgtc_journal_latex/sections/otherFunctions.tex}
+
+
