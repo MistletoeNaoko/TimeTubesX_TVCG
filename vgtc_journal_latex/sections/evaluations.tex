@@ -1,18 +1,24 @@
 \section{Evaluation\label{sec:evaluation}}
 TimeTubesX is a browser-based application written in HTML and Javascript.
 We use React.js to build user interfaces and flux.js to manage the application states.
-We also utilize standard libraries such as three.js~\cite{three_framework}, D3.js~\cite{d3_framework}, and paper.js~\cite{paper_framework}.
-TimeTubesX is open-source, and 
+We also utilize standard libraries such as three.js~\cite{three_framework}, D3.js~\cite{d3_framework}, and Paper.js~\cite{paper_framework}.
+TimeTubesX is open-source (\url{https://github.com/MistletoeNaoko/TimeTubesWeb}), and 
 % the running system can be found at \url{https://timetubes.herokuapp.com/}.
 readers can try the running system with our synthetic data at \url{https://timetubes.herokuapp.com/}.
 
-In this section, we present and discuss two real-world data analysis sessions and feedback from two domain experts at Hiroshima University, who are a co-author of this paper and his former master course student, respectively.
+We shared TimeTubesX with four domain experts, three of whom we interviewed for the domain analysis in Section 3.2: the second author of this paper (astronomer 1), astronomer 1’s former master course student (astronomer 2), the assistant professor at Hiroshima University (astronomer 3), and the postdoc at Stanford University (astronomer 4). Sections \ref{sec:correlate} and \ref{sec:anticorrelate} present two case studies by astronomer 1 and Section \ref{sec:whatif} discusses the cause of the phenomena presented in Section \ref{sec:anticorrelate}. Section \ref{sec:feedback} introduces qualitative feedback from the four domain experts.
+% In this section, we present and discuss two real-world data analysis sessions and feedback from two domain experts at Hiroshima University, who are a co-author of this paper and his former master course student, respectively.
 % In this section, first, we present and discuss two real-world data analysis sessions using the blazar datasets described in~\cite{Gaur2014} that were performed by a domain expert at Hiroshima University, who is a co-author of this paper.
 % And then, we report feedback from two domain experts, 
 % who are the co-author and a  at Hiroshima University.
-Two case studies were performed by the co-author, using the datasets for the blazar named \emph{BL Lac}.
-It was previously empirically noted in\cite{Gaur2014} that the intensity ($I$) of \emph{BL Lac} tends to anti-correlate with the polarization degree ($PD$) during a certain period.
-The observation datasets for \emph{BL Lac} include 285 observations over a period of about 3.5 years.
+To examine the magnetic field structures in the jets, 
+astronomers analyze polarimetric observations. 
+Through the analysis of correlations between polarization and intensity, 
+they validate multiple hypotheses for the increase in the intensity ($I$). 
+The two case studies were performed by astronomer 1, using the datasets for the blazar \emph{BL Lac}. 
+It was previously empirically noted in \cite{Gaur2014} that $I$ of \emph{BL Lac} tends to anti-correlate with the polarization degree ($PD$) during a certain period.
+% It was previously empirically noted in \cite{Gaur2014} that the intensity ($I$) of \emph{BL Lac} tends to anti-correlate with the polarization degree ($PD$) during a certain period.
+% The observation datasets for \emph{BL Lac} include 285 observations over a period of about 3.5 years.
 On a MacBook Pro 2017 with a 3.5 GHz Intel Core i7 and a 16 GB RAM, it took 1{,}193 ms and 1{,}236 ms to obtain the results mentioned in Section~\ref{sec:correlate} and Section~\ref{sec:anticorrelate}, respectively.
 %
 
@@ -47,7 +53,7 @@ On a MacBook Pro 2017 with a 3.5 GHz Intel Core i7 and a 16 GB RAM, it took 1{,}
     \label{fig:EvaluationQueryResults}
 \end{figure}
 %
-The domain expert's goal in these case studies was to identify global statistical features of the period of interest and to build a hypothesis of correlations between the time variations of $I$ and $PD$.
+Astronomer 1's goal in these case studies was to identify global statistical features of the period of interest and to build a hypothesis of correlations between the time variations of $I$ and $PD$.
 To achieve this goal, he had to meticulously analyze correlations between $I$ and $PD$ in the entire time period and many short time intervals within that period.
 However, it seemed difficult to manually take a close look at each of the short time intervals.
 % analyze many short time intervals one by one.
@@ -79,7 +85,7 @@ However, he was still highly pleased with TimeTubesX, as it allowed him to quick
 
 %
 \subsection{Case Study 2: Anti-Correlation Patterns of $I$ and $PD$}\label{sec:anticorrelate}
-The domain expert also noticed that the variation in $I$ tends to \emph{anti}-correlate with that in $PD$. %in \textbf{BL Lac}.
+Astronomer 1 also noticed that the variation in $I$ tends to \emph{anti}-correlate with that in $PD$. %in \textbf{BL Lac}.
 To detect time intervals with such anti-correlated $I$ and $PD$ patterns, he drew another query (Fig.~\ref{fig:EvaluationQueryResults}~(b)),
 where the plane represents the Stokes plane and the stroke width $I$.
 The sketch describes a pattern that $I$ gradually increases and then decreases, while $PD$ shows a negative correlation. %of first increasing and then decreasing.
@@ -104,7 +110,7 @@ These case studies with QBS underline the importance of local analysis of short 
 
 %
 %
-\subsection{What-If Scenario Analysis}
+\subsection{What-If Scenario Analysis}\label{sec:whatif}
 This section explains how astronomers can identify what generally contributes to the $PD$ variation of blazars in a certain time period. 
 % Furthermore, we outline how our domain expert could test a hypothesis like the example of negative correlation between $I$ and $PD$ mentioned in Section~\ref{sec:anticorrelate}.
 
@@ -150,7 +156,7 @@ plausibility of these hypotheses can be visually examined.
 \end{figure}
 
 The following discussion considers the anti-correlation patterns of $I$ and $PD$, as mentioned in Section~\ref{sec:anticorrelate}.
-Our domain expert did indeed compare a dataset consisting of $q$ and $u$ and one consisting of $Q$ and $U$. The comparison results at the time interval with a blue rectangle in Fig.~\ref{fig:EvaluationQueryResults}~(d) are shown in Fig.~\ref{fig:comparisonQIUIvsQU}.
+Astronomer 1 did indeed compare a dataset consisting of $q$ and $u$ and one consisting of $Q$ and $U$. The comparison results at the time interval with a blue rectangle in Fig.~\ref{fig:EvaluationQueryResults}~(d) are shown in Fig.~\ref{fig:comparisonQIUIvsQU}.
 As the red arrows in Fig.~\ref{fig:comparisonQIUIvsQU} indicate, 
 he found that both data samples move toward the origin.
 % , in the $q-u$ domain as well as in the $Q-U$ domain.
@@ -165,14 +171,19 @@ Overall, TimeTubesX greatly facilitated the detailed visual exploration of blaza
 % To avoid such misclassifications in general, users have to visit each detected time interval 
 % and verify whether it satisfies their intentions with the line charts comparing the query and the time interval or TimeTubes view.
 
-\subsection{Qualitative Feedback from Domain Experts}
-In addition to the case studies (Sections~\ref{sec:correlate} and \ref{sec:anticorrelate}),
-our domain experts were able to find three rotation behaviors in the blazar \emph{3C 454.3} that had not yet been described in the literature. 
-Whenever there are multiple polarization components in the same observation area, rotations cannot be identified just by analyzing $PA$ variations.
-They mentioned that identifying these patterns was only possible because TimeTubesX allowed them to analyze rotations whose centers are not at the origin of the Stokes plane~\cite{Huang2019}. 
-% The domain experts confirmed the usefulness of TimeTubesX. 
-They also found the visual queries helpful and impressive. 
-They mentioned that the QBS method was especially useful for validating their abstract hypotheses, as demonstrated in Sections~\ref{sec:correlate} and \ref{sec:anticorrelate}.
-According to them, TimeTubesX allowed them to identify interesting features in short time intervals.
-This cannot be achieved with conventional methods because there are too many short time intervals in a long-term dataset.
-Furthermore, fact-guided querying was crucial for them because it allowed them to refine their sketches based on actual extracted patterns.
+\subsection{Qualitative Feedback from Domain Experts}\label{sec:feedback}
+Astronomer 2 found that the rotation detection was useful. 
+With our rotation detection functionality, 
+he was able to find three unknown rotation behaviors with shifted rotation center in the blazar \emph{3C 454.3}~\cite{Huang2019}. 
+Astronomer 1, 3, and 4 mentioned that the QBS method was especially useful and helpful for validating their high-level hypotheses, as demonstrated in Sections~\ref{sec:correlate} and \ref{sec:anticorrelate}. Specifically, astronomer 3 and 4 said that the dynamic visual querying could be a powerful tool to examine jet physical processes and behaviors of plasma and magnetic fields under extreme conditions, because the dynamic visual querying can efficiently address arbitrary time variation patterns of polarization, intensity, and color. Astronomer 1 and 3 noticed TimeTubesX’s possibility for data mining. In particular, astronomer 3 saw massive potential for mining existing and upcoming large polarization surveys, while astronomer 1 found that a usage of TimeTubesX allows astronomers to identify interesting features in short time intervals, which cannot be achieved with conventional methods due to too many short time intervals in a long-term dataset. Furthermore, fact-guided querying was impressive for him because it allowed astronomers to refine their sketches based on actual extracted patterns.
+
+% In addition to the case studies (Sections~\ref{sec:correlate} and \ref{sec:anticorrelate}),
+% our domain experts were able to find three rotation behaviors in the blazar \emph{3C 454.3} that had not yet been described in the literature. 
+% Whenever there are multiple polarization components in the same observation area, rotations cannot be identified just by analyzing $PA$ variations.
+% They mentioned that identifying these patterns was only possible because TimeTubesX allowed them to analyze rotations whose centers are not at the origin of the Stokes plane~\cite{Huang2019}. 
+% % The domain experts confirmed the usefulness of TimeTubesX. 
+% They also found the visual queries helpful and impressive. 
+% They mentioned that the QBS method was especially useful for validating their abstract hypotheses, as demonstrated in Sections~\ref{sec:correlate} and \ref{sec:anticorrelate}.
+% According to them, TimeTubesX allowed them to identify interesting features in short time intervals.
+% This cannot be achieved with conventional methods because there are too many short time intervals in a long-term dataset.
+% Furthermore, fact-guided querying was crucial for them because it allowed them to refine their sketches based on actual extracted patterns.

@@ -5,7 +5,7 @@ we have implemented automatic feature extraction for discovery and analysis of d
 TimeTubesX automatically extracts three types of feature: anomalies (Section~\ref{sec:anomalyDetection}), flares (Section~\ref{sec:flareDetection}), and rotations (Section~\ref{sec:rotationDetection}).
 % As the first step for quickly finding such behaviors, 
 % TimeTubesX supports automatic feature extraction for three types of features: anomalies, flares, and rotations. %; flare detection; and rotation detection. 
-We have significantly improved the detection algorithms for flares and rotations, compared with the ones in our short paper~\cite{Sawada2018}, 
+We have significantly improved the detection algorithms for flares and rotations, compared with the ones in our paper~\cite{Sawada2018}, 
 to identify flares more flexibly and detect rotations more accurately.
 % The automatic feature extraction allows users to quickly identify candidate time intervals for known blazar behaviors.
 %It supports the users' efficient analysis through quick access to candidates for observable behaviors.
@@ -22,7 +22,7 @@ We define time points with drastic temporal changes over polarization, intensity
 Tracking anomalies can result in identifying unusual time variations or presages of well-known behaviors such as flares or rotations
 because observable blazar behaviors show a tendency to include these drastic variations.
 
-The degree of anomaly is given by the amount of change over polarization, intensity, and color per day:
+The anomaly degree was defined in our previous paper~\cite{Sawada2018} as the product of the change amount over polarization, intensity, and color per day:
 \begin{equation*}
 \begin{split}
   \int_t^{t + \Delta t}\left|\frac{dPolar(t)}{dt}\right|\cdot\left|\frac{dI(t)}{dt}\right|\cdot\left|\frac{dC(t)}{dt}\right|dt,
@@ -33,7 +33,7 @@ where $Polar(t)$ means the position of a data sample on the Stokes plane at time
 %In the anomaly detection, observation errors have not been taken into account for the sake of simplicity.
 
 \textsf{Experimental results.\ } When we applied the anomaly detection to our synthetic data, 
-data samples around an extreme peak (red diamonds in Fig.~\ref{fig:synthesisData}~(a)) and parts of dynamic rotations (green plots in (b)) were highly ranked.
+data samples around an extreme peak (orange diamonds in Fig.~\ref{fig:synthesisData}~(a)) and parts of dynamic rotations (green plots in (b)) were highly ranked.
 
 
 %
@@ -43,7 +43,7 @@ Flares are defined as extreme peaks of brightness (i.e., emitted light intensity
 Astronomers regard flares as one of the most important observed behaviors of blazars.
 However, since there is no specific threshold value of $I$ to define a flare, 
 they need to analyze the local temporal profile of $I$ to identify flares.
-We have updated flare detection methods from those in our previous short paper~\cite{Sawada2018}
+We have updated flare detection methods from those in our previous paper~\cite{Sawada2018}
 to detect relatively small local flares as well as globally large flares.
 To that end, we utilize peak detection methods for time-series data~\cite{Palshikar2009} to extract flare candidates. 
 The flare detection comprises the following two steps:
@@ -94,14 +94,14 @@ because astronomers are equally interested in both small, individual flares and 
 We set $K$ and $h$ to 3 and 1, respectively.
 Fig.~\ref{fig:flareDetection} presents the flare detection results.
 The four time points were detected as flares,
-which completely coincide with the deliberately generated peaks that are highlighted in red in Fig.~\ref{fig:synthesisData}~(a).
+which completely coincide with the deliberately generated peaks that are highlighted in orange in Fig.~\ref{fig:synthesisData}~(a).
 
 \subsection{Rotation Detection}\label{sec:rotationDetection}
 The polarization rotation is another important observed behavior of blazars. 
 Astronomers do not yet agree on whether rotation is a real feature or just a result of random variations of polarization.
 To validate their hypotheses, they scrutinize correlations between polarization and other properties of the time interval.
 They have been analyzing time variation of $PA$ to identify rotations~\cite{Ikejiri2011, Uemura2017},
-but polarization values do not necessarily rotate around the origin of the Stokes plane ($(q, u) = (0, 0)$).
+but the rotation center will not be located at the origin of the Stokes plane ($(q, u) = (0, 0)$) when there are multiple polarized components in the sky.
 Thus, estimating a rotation only by $PA$ may not allow astronomers to adequately understand its behavior.
 Our rotation detection is capable of addressing any rotations regardless of the position of the rotation center.
 
@@ -144,12 +144,13 @@ due to the range constraint on $\theta_{\rm diff}$, i.e., $\theta_{\rm diff} \in
 For example, when two successive data samples are located in the first and fourth quadrant of the Stokes plane, 
 we need to consider whether to take the clockwise or counterclockwise direction as $\theta_{\rm diff}$. 
 So, we determine the rotation direction 
-by checking increasing/decreasing tendency in $\theta$'s with exponential smoothing~\cite{Brown1956},
+by checking increasing/decreasing tendency in $\theta$'s with exponential smoothing~\cite{Brown1956}.
 % by comparing the predictive values for $\theta$'s, which we can derive by exponential smoothing~\cite{Brown1956}.
-which is a forecasting method
+% which is a forecasting method
 % for time-series datasets to predict a subsequent value based on previous values. 
-that produces a weighted average of past observations. 
-Specifically, it assigns larger weights to more recent observations.
+% that produces a weighted average of past observations. 
+It forecasts the next value according to past observations by assigning larger weights to more recent observations.
+It will address the uncertainty about the rotation direction and make results more feasible (\textbf{T1}).
 % If the predictive value derived by exponential smoothing increases, 
 % the rotation direction tends to be counterclockwise;
 % otherwise, it is clockwise.

@@ -2,7 +2,6 @@
 In this section, we give an overview of visual encoding for blazar data and the visual exploration framework of TimeTubesX.
 % We introduce a 3D tube expression of our previous TimeTubes~\cite{Fujishiro2018} into TimeTubesX.
 
-\subsection{Visual Encoding for Blazar Data}\label{sec:VisualEncoding}
 \begin{figure}[tb]
     \begin{minipage}{0.34\linewidth}
         \centering
@@ -34,6 +33,7 @@ In this section, we give an overview of visual encoding for blazar data and the 
     (c)~The neighboring ellipses are smoothly connected in chronological order to yield a tube shape.}
     \label{fig:howtoplot}
 \end{figure}
+\subsection{Visual Encoding for Blazar Data}\label{sec:VisualEncoding}
 \begin{figure*}
     \centering
     \includegraphics[width=.99\linewidth]{vgtc_journal_latex/figures/workflowGray.pdf}
@@ -53,12 +53,15 @@ TimeTubesX expresses blazar observations as a single 3D volumetric tube.
 In the following, we give a short overview of \emph{TimeTubes view}, which was originally proposed in our previous work~\cite{Fujishiro2018}.
 % We call the view of the 3D volumetric tube \emph{TimeTubes view}.
 The TimeTubes view, that is explained in Fig.~\ref{fig:howtoplot}, allows users to see correlations and variations of variables over time at a glance, as illustrated in Fig.~\ref{fig:framework}~(E).
+Currently, users need to import csv files with column names from their local environment into TimeTubesX.
 %as shown in TimeTubes view in the lower right of \autoref{fig:framework}.
 %
 We use a left-handed coordinate system to assign $q$ and $u$ to the $x$ and $y$ axes, respectively, and time $t$ to the $z$ axis.
 %of the visualization domain, $u$ to $y$ axis, and $t$ to $z$ axis.
 We encode the polarization parameters ($q$, $u$, $\epsilon_q$, $\epsilon_u$) at each timestamp $t$ as an ellipse centered at $(x, y, z) = (q(t), u(t), t)$ with width $2\epsilon_q(t)$ and height $2\epsilon_u(t)$, as depicted in Fig.~\ref{fig:howtoplot}~(a). 
 Therefore, the $x$--$y$ location of an ellipse indicates the polarization at a certain time stamp, while the size of the ellipse indicates the uncertainty in the measurement.
+To properly render a 3D tube, we decide the value range of the Stokes plane in TimeTubes view with reference to standard deviations of $q$ and $u$ of the datasets. 
+In the current TimeTubes view, we empirically set a single pixel in $z$ axis direction one day.
 %
 We colorize these ellipses according to $I(t)$ and $C(t)$ based on a user-defined 2D colormap (Fig.~\ref{fig:howtoplot}~(b)). 
 The TimeTubes view connects neighboring ellipses in chronological order, using centripetal Catmull-Rom splines to form a 3D volumetric tube (see Fig.~\ref{fig:howtoplot}~(c)). 
@@ -151,8 +154,8 @@ Users are able to recognize groups of results sharing identical time points and 
 % The thumbnails of all relevant (i.e., non-filtered) results are shown in panel (E) to give users an intuitive overview of their query results.
 When selecting an individual thumbnail, TimeTubesX show detailed information on that result in panel (D), including exact time stamps and the distance between the query and the result.
 % The detailed information is helpful for users' deeper understanding of the extracted time interval.
-To compare multiple query results,
-TimeTubesX allows users to export and import query results.
+To re-utilize the query, compare multiple query results, and share the query and their results with other users, 
+TimeTubesX allows users to export and import queries and their results in the form of JSON file in a custom format for TimeTubesX.
 When importing previous query results,
 panel (F) shows a summary of the query used in the previous process and panel (C) shows another timeline for the imported query results.
 
@@ -184,7 +187,7 @@ Fig.~\ref{fig:querySpecificationPanel} shows the query specification panel in ea
 
 To better demonstrate our feature and pattern detection methods, we will use a synthetic dataset (see Fig.~\ref{fig:synthesisData}) as a running example in Sections~\ref{sec:automaticExtraction} and \ref{sec:visualQuery}.
 %for illuminating the feature extraction, as illustrated in \autoref{fig:synthesisData}.
-It contains four large peaks in $I$ as highlighted by red diamonds in (a), three small circular patterns on the Stokes plane (red patterns in (b)), three big rotations (green), and three narrow/rough-edged patterns (blue).
+It contains four large peaks in $I$ as highlighted by orange diamonds in (a), three small circular patterns on the Stokes plane (red patterns in (b)), three big rotations (green), and three narrow/rough-edged patterns (blue).
 
 % \begin{figure}[H]
 %     \centering
