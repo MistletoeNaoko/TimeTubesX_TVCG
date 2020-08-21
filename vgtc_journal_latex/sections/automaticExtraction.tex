@@ -5,7 +5,7 @@ we have implemented automatic feature extraction for discovery and analysis of d
 TimeTubesX automatically extracts three types of feature: anomalies (Section~\ref{sec:anomalyDetection}), flares (Section~\ref{sec:flareDetection}), and rotations (Section~\ref{sec:rotationDetection}).
 % As the first step for quickly finding such behaviors, 
 % TimeTubesX supports automatic feature extraction for three types of features: anomalies, flares, and rotations. %; flare detection; and rotation detection. 
-We have significantly improved the detection algorithms for flares and rotations, compared with the ones in our paper~\cite{Sawada2018}, 
+We have significantly improved the detection algorithms for flares and rotations, compared with the ones in our previous work~\cite{Sawada2018}, 
 to identify flares more flexibly and detect rotations more accurately.
 % The automatic feature extraction allows users to quickly identify candidate time intervals for known blazar behaviors.
 %It supports the users' efficient analysis through quick access to candidates for observable behaviors.
@@ -22,10 +22,10 @@ We define time points with drastic temporal changes over polarization, intensity
 Tracking anomalies can result in identifying unusual time variations or presages of well-known behaviors such as flares or rotations
 because observable blazar behaviors show a tendency to include these drastic variations.
 
-The anomaly degree was defined in our previous paper~\cite{Sawada2018} as the product of the change amount over polarization, intensity, and color per day:
+The anomaly degree was defined in our previous work~\cite{Sawada2018} as the product of the change amount over polarization, intensity, and color per day:
 \begin{equation*}
 \begin{split}
-  \int_t^{t + \Delta t}\left|\frac{dPolar(t)}{dt}\right|\cdot\left|\frac{dI(t)}{dt}\right|\cdot\left|\frac{dC(t)}{dt}\right|dt,
+  \int_t^{t + 1}\left|\frac{dPolar(t)}{dt}\right|\cdot\left|\frac{dI(t)}{dt}\right|\cdot\left|\frac{dC(t)}{dt}\right|dt,
   \label{eq:anomaly}
 \end{split}
 \end{equation*}
@@ -43,7 +43,7 @@ Flares are defined as extreme peaks of brightness (i.e., emitted light intensity
 Astronomers regard flares as one of the most important observed behaviors of blazars.
 However, since there is no specific threshold value of $I$ to define a flare, 
 they need to analyze the local temporal profile of $I$ to identify flares.
-We have updated flare detection methods from those in our previous paper~\cite{Sawada2018}
+We have updated flare detection methods from those in our previous work~\cite{Sawada2018}
 to detect relatively small local flares as well as globally large flares.
 To that end, we utilize peak detection methods for time-series data~\cite{Palshikar2009} to extract flare candidates. 
 The flare detection comprises the following two steps:
@@ -75,7 +75,7 @@ because astronomers are equally interested in both small, individual flares and 
 \begin{figure}[tb]
     \centering
     \includegraphics[width=.85\linewidth]{vgtc_journal_latex/figures/flareDetectiondemodataResults.png}
-    \caption{Flare detection results for our synthetic data. The detected results match the four red data points in Fig.~\ref{fig:synthesisData}~(a).}
+    \caption{Flare detection results for our synthetic data. The detected results match the four red data samples in Fig.~\ref{fig:synthesisData}~(a).}
     \label{fig:flareDetection}
 \end{figure}
 \begin{figure}[tb]
@@ -120,9 +120,11 @@ Computation of the rotation angle is divided into the following seven steps:
     \item \textsl{Sum up $\theta_{\rm diff}$'s to yield $\theta_{\rm sum}$}; \label{algo:rotationSum}
     \item \textsl{Check whether $\theta_{\rm sum}$ is larger than the user-specified threshold for the total rotation angle}. \label{algo:rotationThreshold}
 \end{enumerate}
+We regard $\overline{q}$ and $\overline{u}$ as a rotation center. 
 To avoid misleading effects of outliers and unexpected values at the edges of a time interval,
-our detection method uses weighted mean values at \ref{algo:rotationMean}. Smaller weights are assigned to both ends of the time interval, 
-while heavier weights are assigned to its center according to a Gaussian distribution. %as the rotation center of the focused time interval at \ref{algo:rotationMean}.
+% our detection method uses weighted mean values at \ref{algo:rotationMean}. 
+smaller weights are assigned to both ends of the time interval according to a Gaussian distribution at \ref{algo:rotationMean}.
+% while heavier weights are assigned to its center according to a Gaussian distribution. %as the rotation center of the focused time interval at \ref{algo:rotationMean}.
 Note that users are allowed to adjust these weight ratios.
 %
 To avoid misclassifying time intervals with large $q$ or $u$ variance and unlike rotations as rotation candidates,
@@ -134,7 +136,7 @@ we have improved upon our previous rotation detection method~\cite{Sawada2018} b
 %To address this problem, the current 
 %
 To detect only large rotations, 
-our new rotation detection method is able to filter out time intervals in which \textbf{either} $\sigma_{q}$ \textbf{or} $ \sigma_{u}$ is smaller than the standard deviation of the entire dataset. % avoid small or narrow patterns.
+our new method is able to filter out time intervals in which \textbf{either} $\sigma_{q}$ \textbf{or} $ \sigma_{u}$ is smaller than the standard deviation of the entire dataset. % avoid small or narrow patterns.
 %The up-to-date version provides 
 Note that this and other provided filtering constraints also allow for discovery of small or narrow rotations, such as red and blue patterns in Fig.~\ref{fig:synthesisData}~(b).
 % Additionally, we provide multiple filters on standard deviations of the time intervals as well as the previous filter, to find out small rotations.
@@ -143,7 +145,7 @@ At \ref{algo:rotationDiff}, we cannot compute $\theta_{\rm diff}$ simply by subt
 due to the range constraint on $\theta_{\rm diff}$, i.e., $\theta_{\rm diff} \in [0, 2\pi]$. 
 For example, when two successive data samples are located in the first and fourth quadrant of the Stokes plane, 
 we need to consider whether to take the clockwise or counterclockwise direction as $\theta_{\rm diff}$. 
-So, we determine the rotation direction 
+We determine the rotation direction 
 by checking increasing/decreasing tendency in $\theta$'s with exponential smoothing~\cite{Brown1956}.
 % by comparing the predictive values for $\theta$'s, which we can derive by exponential smoothing~\cite{Brown1956}.
 % which is a forecasting method

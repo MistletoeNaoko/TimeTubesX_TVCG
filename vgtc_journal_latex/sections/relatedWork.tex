@@ -15,7 +15,7 @@ Most astronomers work on analyzing signals from distant celestial bodies, as mea
 % which realizes analysis across multiple different visualization, such as scatterplots and parallel coordinate plots.
 % Though many techniques have been developed for astronomical data, there are no other effective techniques for blazar observations, except for our early attempt~\cite{Fujishiro2018}.
 ESASky~\cite{Baines2017} and OpenSpace~\cite{Bock2020} provide views for parts of the sky that are integrated from multiple data sources.
-Almryde et al.~\cite{Almryde2016} visualize dark matter halos’ temporal evolution of position, mass, and radial velocity. 
+Almryde et al.~\cite{Almryde2016} visualize the temporal evolution of position, mass, and radial velocity of dark matter halos. 
 % Various types of telescopes are used to observe the sky or particular celestial bodies in different wavelengths 
 % because visible light observation does not provide enough data to appreciate the nature of the universe.
 % observing only visible light is not enough to appreciate the real nature of the universe.
@@ -26,7 +26,7 @@ Some approaches~\cite{Haroz2008, Li2008, Preston2016, McCurdy2019, Burchett2019}
 Many techniques have been developed for analysis of astronomical data, 
 but typically, blazar researchers have been using animated scatterplots (see Section~\ref{sec:VisualEncoding}) 
 because there were no other effective techniques for blazar observations prior to our early attempt, TimeTubes~\cite{Fujishiro2018}.
-For more efficient data analysis with TimeTubesX, we introduce feature and pattern detection methods for blazar datasets, a part of which is an extension of our previous paper~\cite{Sawada2018}.
+% For more efficient data analysis with TimeTubesX, we introduce feature and pattern detection methods for blazar datasets, a part of which is an extension of our previous paper~\cite{Sawada2018}.
 
 \subsection{Visual Queries}\label{sec:relatedFeature}
 Visual query systems allow users to intuitively search for patterns of interest in their data.
@@ -40,11 +40,12 @@ whereas query-by-sketch allows users to directly draw the shape of interest.
 \textsf{Query-by-example.\ }
 % QBE for univariate data
 %In these systems, users select an example from their data, that serves as the query for the rest of the dataset.% excerpt a part of time series for their query.
-Hochheiser and Shneiderman~\cite{Hochheiser2004} propose TimeSearcher, a visual exploration tool for time-series data. Users can select portions of timelines by the use of rectangular widgets like Timeboxes~\cite{Buono2005} and Search Boxes~\cite{Buono2008}.
+Hochheiser and Shneiderman~\cite{Hochheiser2004} propose TimeSearcher, a visual exploration tool for time-series data. Users can select portions of timelines by the use of rectangular widgets~\cite{Buono2005, Buono2008}.
+% such as Timeboxes~\cite{Buono2005} and Search Boxes~\cite{Buono2008}.
 %where the users are allowed to select portions of timelines by putting boxes, termed Timeboxes~\cite{Buono2005} or Search Boxes~\cite{Buono2008}.
 Holz and Feiner~\cite{Holz2009} propose a relaxed selection technique for time intervals, through which users define the level of similarity either by the input speed or by spatial deviation from an original timeline.
-The idea of detecting the input speed inspired our sketching interface.
-However, their interactions are geared only toward univariate time-series data and are not appropriate for our mD blazar data.
+The idea of detecting the input speed was adopted by our sketching interface.
+However, these interactions are geared only toward univariate time-series data and are not appropriate for our mD blazar data.
 %
 %to allow ones to select a time interval and to define the level of similarity simultaneously
 %by detecting either sketching speed or spatial deviation from an original timeline.
@@ -65,19 +66,20 @@ The scatterplots by Martin and Ward~\cite{Martin2005} and Elmqvist et al.~\cite{
 % QBS
 \textsf{Query-by-sketch.\ } 
 %Users may sketch the shape of interest for their query.
-Early examples of sketch-based queries include QuerySketch~\cite{Wattenberg2001} for temporal databases and QueryLines~\cite{Ryall2005} for approximate queries. 
+Early query-by-sketch examples include QuerySketch~\cite{Wattenberg2001} for temporal databases and QueryLines~\cite{Ryall2005} for multiple timelines. 
 %QuerySketch~\cite{Wattenberg2001} is a sketch-based visual query tool for a temporal database.
 %QueryLines~\cite{Ryall2005} allows the users to draw a query involving soft constraints and preferences.
 TimeSketch~\cite{Eichmann2015} supports pen and touch-based query specification but focuses only on univariate time-series data.
 
 % symbolic approximation
 %Query-by-sketch interfaces have to handle ambiguities of hand-drawn sketches. 
-To deal with the ambiguities of hand-drawn sketches, several systems discretize the input query and datasets into symbolic or quantized representations~\cite{Muthumanickam2016,ruta2019sax}.
+To deal with the ambiguities of hand-drawn sketches, several systems discretize the query and datasets into symbolic or quantized representations~\cite{Muthumanickam2016,ruta2019sax}.
 %The input query and time series are discretized into symbolic representations to cope with uncertainties of a hand-drawn sketch in \cite{Muthumanickam2016} and \cite{ruta2019sax}.
 %
-Alternatively, Correll and Gleicher~\cite{Correll2016} define invariants for hand-drawn sketches. % to deal with uncertainties of sketches. 
-Mannino and Abouzied~\cite{Mannino2018} provide a matching algorithm that takes human sketching errors into account.
-The sketching interactions of Qetch~\cite{Mannino2018} inspired our query-by-sketch interface.
+Alternatively, Correll and Gleicher~\cite{Correll2016} define invariants for sketches. % to deal with uncertainties of sketches. 
+Qetch~\cite{Mannino2018} provides a matching algorithm that takes human sketching errors into account.
+Our query-by-sketch interface uses sketching interactions similar to those of Qetch~\cite{Mannino2018}.
+% The sketching interactions of Qetch~\cite{Mannino2018} inspired our query-by-sketch interface.
 Both techniques target univariate time-series data.
 %
 Shao et al.~\cite{Shao2014} introduce sketch-based queries for large sets of scatterplots

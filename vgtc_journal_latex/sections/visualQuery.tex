@@ -108,7 +108,7 @@ First, users define which variables are assigned to the $x$ and $y$ axes of the 
 Second, they sketch a time variation pattern on a 2D sketch pad UI (3),
 where the stroke is shown in black and its width is shown in blue.
 % After drawing, our system automatically converts the sketch into a Cubic Bezier curve and beautifies the input stroke to remove undesired artifacts due to shaky input. 
-After drawing, our system automatically beautifies the input stroke by fitting it to a cubic Bezier curve with as few segments as possible with ‘simplify’ method from Paper.js~\cite{paper_framework}.
+After drawing, our system automatically beautifies the input stroke by fitting it to a cubic Bezier curve with as few segments as possible with the \texttt{simplify} method from Paper.js~\cite{paper_framework}.
 After their initial drawing, users can further adjust the sketch
 by adding, removing, or moving control points, or by changing the stroke width.
 Furthermore, users are allowed to assign filtering constraints to each of the control points on the input sketch, as shown in part (4).
@@ -207,27 +207,27 @@ We address this problem by incorporating fact-guided querying (see Section~\ref{
 
 %
 \subsection{Query Matching Algorithm}\label{sec:matchingAlgorithm}
-\begin{figure}[tb]
-    \begin{minipage}{0.62\linewidth}
-        \centering
-        \includegraphics[width=.95\linewidth]{vgtc_journal_latex/figures/DTWI.pdf}\\
-    \end{minipage}
-    \begin{minipage}{0.37\linewidth}
-        \centering
-        \includegraphics[width=.95\linewidth]{vgtc_journal_latex/figures/DTWD.pdf}\\
-    \end{minipage}
-    \begin{minipage}{0.62\linewidth}
-        \centering
-        \footnotesize{\sf(a)~${\rm DTW}_{\rm I}$}
-    \end{minipage}
-    \begin{minipage}{0.37\linewidth}
-        \centering
-        \footnotesize{\sf(b)~${\rm DTW}_{\rm D}$}
-    \end{minipage}
-    \caption{DTW options for dealing with multi-dimensional data.
-    ${\rm DTW}_{\rm I}$ warps each dimension independently, whereas all dimensions are warped dependently in ${\rm DTW}_{\rm D}$.}
-    \label{fig:DTW}
-\end{figure}
+% \begin{figure}[tb]
+%     \begin{minipage}{0.62\linewidth}
+%         \centering
+%         \includegraphics[width=.95\linewidth]{vgtc_journal_latex/figures/DTWI.pdf}\\
+%     \end{minipage}
+%     \begin{minipage}{0.37\linewidth}
+%         \centering
+%         \includegraphics[width=.95\linewidth]{vgtc_journal_latex/figures/DTWD.pdf}\\
+%     \end{minipage}
+%     \begin{minipage}{0.62\linewidth}
+%         \centering
+%         \footnotesize{\sf(a)~${\rm DTW}_{\rm I}$}
+%     \end{minipage}
+%     \begin{minipage}{0.37\linewidth}
+%         \centering
+%         \footnotesize{\sf(b)~${\rm DTW}_{\rm D}$}
+%     \end{minipage}
+%     \caption{DTW options for dealing with multi-dimensional data.
+%     ${\rm DTW}_{\rm I}$ warps each dimension independently, whereas all dimensions are warped dependently in ${\rm DTW}_{\rm D}$.}
+%     \label{fig:DTW}
+% \end{figure}
 %
 There are many different methods to compute the distance between two time series, such as the Euclidean distance, uniform scaling, or dynamic time warping (DTW)~\cite{Berndt1994}.
 TimeTubesX uses DTW
@@ -240,7 +240,8 @@ TimeTubesX implements two options, ${\rm DTW}_{\rm I}$ (independent) and ${\rm D
 %${\rm DTW}_{\rm Independent}$ (${\rm DTW}_{\rm I}$) and ${\rm DTW}_{\rm Dependent}$ (${\rm DTW}_{\rm D}$). 
 %The ideas come from Shokoohi-Yekta et al.~\cite{Shokoohi-Yekta2015}.
 
-${\rm DTW}_{\rm I}$ computes the distance between two time series for each dimension of the data separately (see Fig.~\ref{fig:DTW}~(a)). In the final step, it adds up all those individual distances to the final distance measure.
+${\rm DTW}_{\rm I}$ computes the distance between two time series for each dimension of the data separately. %(see Fig.~\ref{fig:DTW}~(a)). 
+In the final step, it adds up all those individual distances to the final distance measure.
 %${\rm DTW}_{\rm I}$ makes each dimension of time series warp irrespective of other dimensions and then cumulates the distances of all dimensions, as illustrated in \autoref{fig:DTW}~(a).
 % ${\rm DTW}_{\rm I}$ defines the distance between two time series as a cumulative distance of all dimensions in the time series.
 % In other words, it makes each dimension warp irrespective of other dimensions, as illustrated in \autoref{fig:DTW}~(a).
@@ -250,11 +251,13 @@ Consequently, this approach focuses more on the similarity of each dimension and
 % Consequently, the time variation of each dimension looks similar, 
 % but correlations among dimensions may decrease.
 % wrong: first accumulates the signal from all dimensions for each time series individually, and then computes the distance between those two accumulated time series (see \autoref{fig:DTW}~(b)).
-${\rm DTW}_{\rm D}$, on the other hand, computes the distance between two data samples directly over all dimensions (i.e., as Euclidean distance in $n$-dimensional space), as seen in Fig.~\ref{fig:DTW}~(b).
+${\rm DTW}_{\rm D}$, on the other hand, computes the distance between two data samples directly over all dimensions (i.e., as Euclidean distance in $n$-dimensional space).
 Therefore, this method focuses more on correlations among the different dimensions of a time series and less on the similarities of individual dimensions. 
 %takes more account of correlations among dimensions than similarity of each dimension.
-By default, our system uses ${\rm DTW}_{\rm D}$ because correlations among variables are significantly more important for blazar behavior analysis.
-
+By default, our system uses ${\rm DTW}_{\rm D}$ because correlations among variables are significantly important for blazar behavior analysis.
+% Comprehensive illustrations for ${\rm DTW}_{\rm I}$ and ${\rm DTW}_{\rm D}$ appear in \cite[Fig. 1]{Shokoohi-Yekta2015}.
+Readers are recommended to see \cite[Fig. 1]{Shokoohi-Yekta2015} for comprehensive illustrations of ${\rm DTW}_{\rm I}$ and ${\rm DTW}_{\rm D}$.
+% We recommend readers to see \cite[Fig. 1]{Shokoohi-Yekta2015} for comprehensive illustrations of ${\rm DTW}_{\rm I}$ and ${\rm DTW}_{\rm D}$.
 We use a sliding window approach in our matching algorithm.
 %, the interactive feature extraction picks up a time interval from long-term data 
 %and then computes the distance between the input query and the time interval according to the selected option.  

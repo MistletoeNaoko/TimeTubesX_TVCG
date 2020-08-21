@@ -40,7 +40,7 @@ In this section, we give an overview of visual encoding for blazar data and the 
     \caption{Visual exploration framework of TimeTubesX. Users can load multiple datasets into a single exploration session through visual data fusion. (A)~Users specify a query to extract features of interest; (B)~Query results are sorted by relevance; (C)~Individual results can be analyzed in high detail and compared to each other; (D)~An extraction result can be re-used as an input for a new visual query; and (E)~Users can visually explore the results in the TimeTubes and scatterplots views.}
     \label{fig:framework}
 \end{figure*}
-Previously, astronomers have used three animated scatterplots with error bars to visualize their multi-dimensional, time-dependent observations (see the accompanying video): one for the time variation of $I$, termed \textit{light curve}, another for the Stokes plane, and a third for the correlation between $I$ and $C$.
+Astronomers have used three animated scatterplots with error bars to visualize their multi-dimensional, time-dependent observations (see the accompanying video): one for time variation of $I$, termed \textit{light curve}, another for the Stokes plane, and a third for the correlation between $I$ and $C$.
 During the animation, individual observations are highlighted in red in the order of observation.
 % The animated scatterplots are comprised of three scatterplots, one for the time variation of $I$, termed \textit{light curve}, another for the Stokes plane, and a third for the correlation between $I$ and $C$.
 % The \textit{light curve} (\autoref{fig:traditionalMethod}~(a)) is the most important plot for astronomers, and shows the variation of $I$ over time. 
@@ -60,11 +60,11 @@ We use a left-handed coordinate system to assign $q$ and $u$ to the $x$ and $y$ 
 %of the visualization domain, $u$ to $y$ axis, and $t$ to $z$ axis.
 We encode the polarization parameters ($q$, $u$, $\epsilon_q$, $\epsilon_u$) at each timestamp $t$ as an ellipse centered at $(x, y, z) = (q(t), u(t), t)$ with width $2\epsilon_q(t)$ and height $2\epsilon_u(t)$, as depicted in Fig.~\ref{fig:howtoplot}~(a). 
 Therefore, the $x$--$y$ location of an ellipse indicates the polarization at a certain time stamp, while the size of the ellipse indicates the uncertainty in the measurement.
-To properly render a 3D tube, we decide the value range of the Stokes plane in TimeTubes view with reference to standard deviations of $q$ and $u$ of the datasets. 
-In the current TimeTubes view, we empirically set a single pixel in $z$ axis direction one day.
+To properly render a 3D tube, we set the value range of the Stokes plane in the TimeTubes view with reference to standard deviations of $q$ and $u$ of the datasets. 
+In the current TimeTubes view, we empirically map a single day to a single voxel along the $z$ axis direction.
 %
-We colorize these ellipses according to $I(t)$ and $C(t)$ based on a user-defined 2D colormap (Fig.~\ref{fig:howtoplot}~(b)). 
-The TimeTubes view connects neighboring ellipses in chronological order, using centripetal Catmull-Rom splines to form a 3D volumetric tube (see Fig.~\ref{fig:howtoplot}~(c)). 
+We colorize the ellipses according to $I(t)$ and $C(t)$ based on a user-defined 2D colormap (Fig.~\ref{fig:howtoplot}~(b)). 
+The TimeTubes view connects neighboring ellipses in chronological order, using centripetal Catmull-Rom splines to form a 3D volumetric tube (Fig.~\ref{fig:howtoplot}~(c)). 
 To further reflect the reliability of the observations, the TimeTubes view offers an adjustable opacity transfer function.
 Multiple concentric tubes with different transparencies (i.e., higher opacities for inner tubes) compose a single tube that allows users to intuitively perceive the uncertainties of observations.
 For instance, a time interval with small errors looks like an opaque tube, whereas time intervals with large errors look more semi-transparent and fuzzy.

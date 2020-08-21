@@ -2,12 +2,12 @@
 In this section, we specify our blazar observation data and define domain-specific goals and visualization tasks that were identified with our domain experts. 
 
 \subsection{Blazar Observation Data}\label{sec:BlazarData}
-Multiple observatories worldwide collect blazar data, however, their observed properties or units of measurement differ depending on the specific telescopes that are being used. 
+Multiple observatories worldwide collect blazar data, however, their observed properties or units of measurement differ depending on telescopes being used. 
 %are different depending on the used telescopes.
 To reduce uncertainties due to missing observational data and observation errors,
 TimeTubesX allows users to fuse multiple datasets for the same blazar from different observatories 
 through the automatic handling of potentially different definitions of observed variables~\cite{Fujishiro2018}.
-Thus, users can, for example, include data from Hiroshima University and the University of Arizona (\url{http://james.as.arizona.edu/~psmith/Fermi/}) in the same visualization session. 
+Thus, users can, for example, include data from Hiroshima University and the University of Arizona in the same visualization session. 
 TimeTubesX is designed to mainly process datasets acquired by Hiroshima Astrophysical Science Center at Hiroshima University,
 which uses a $1.5\mathrm{m}$ Kanata telescope. 
 %taking full care of discrepancy in the definition of variables~\cite{Fujishiro2018}.
@@ -33,12 +33,12 @@ while $PA$ denotes a half of the polar angle in the Stoke plane, as illustrated 
 % THE TYPICAL SIZE OF ONE DATA
 % HOW MANY DATASETS
 The observation frequency differs depending on observatories.
-The median observation interval of Hiroshima University is once every two days,
-while that of the University of Arizona is once a day.
+The median observation interval of Hiroshima University is once every two days.
+% while that of the University of Arizona is once a day.
 Note that datasets include missing data due to the rotation and/or revolution of the Earth, bad atmospheric conditions, and so on.
 % Our primary datasets from Hiroshima University include about 300 to 400 data samples from the years 2008 to 2014. 
 In this paper, we process datasets from Hiroshima University for two blazars: \emph{BL Lac} and \emph{3C 454.3}. 
-The datasets for \emph{BL Lac} have 285 data points from May 2008 to December 2011, while the one for \emph{3C 454.3} has 355 data points from July 2008 to July 2014.
+The datasets for \emph{BL Lac} have 285 data samples from May 2008 to December 2011, while the one for \emph{3C 454.3} has 355 data samples from July 2008 to July 2014.
 % \begin{eqnarray}
 % PD(t) & = & \sqrt{q(t)^2+u(t)^2}, \label{equ:PD}
 % \label{eqn:PD}\\
@@ -80,25 +80,26 @@ TimeTubesX effectively supports the following four domain goals:
 \noindent\textbf{G1--Enhance the reliability of blazar observations}. 
 % Due to the rotation of the Earth or bad atmospheric conditions, 
 Datasets always contain missing data and observation errors. 
-Astronomers need to assess whether the interesting behavior they found is plausible by analyzing the length of missing data periods and the size of errors.
+Astronomers need to assess what they found is plausible by analyzing the length of missing data periods and the size of errors.
 
 \noindent\textbf{G2--Identify flares and rotations}. 
 Astronomers typically pay attention to time intervals with dynamic time variations, %features that dynamically change over a period of time. 
 % Examples include 
-such as flares that occur when the blazar is more energetic than usual and polarization rotations. %, which sometimes co-occur with dynamic changes of $I$ or $C$.
-The analysis of time intervals with such dynamic variations help astronomers demystify the jet's structures.
-For example, astronomers are interested in polarization variations at the time of flares.
+such as flares and rotations.
+% such as flares that occur when the blazar is more energetic than usual and polarization rotations. %, which sometimes co-occur with dynamic changes of $I$ or $C$.
+The analysis of time intervals with such dynamic variations helps astronomers demystify the jet's structures.
+% For example, astronomers are interested in polarization variations at the time of flares.
 % These dynamic behaviors are important because they help astronomers demystify the jet's structures.
 
 \noindent\textbf{G3--Locate recurring blazar behaviors}.
 Besides well-known behaviors such as flares and rotations, 
-recurring patterns or features of time variations can also exist.
-Thus, when astronomers find an interesting pattern, 
-they want to locate other time intervals similar to the pattern.
+recurring patterns or common features can also exist.
+Thus, finding an interesting pattern or feature, 
+astronomers want to locate other time intervals similar to it.
 
 \noindent\textbf{G4--Explore time intervals validating a hypothesis of blazar behaviors}.
 Through their analyses or experiences, astronomers sometimes make a hypothesis, e.g., the flares of a blazar tend to co-occur with a specific polarization variation pattern. 
-Astronomers need to address time intervals that might verify the hypothesis.
+Astronomers need to address time intervals that might validate the hypothesis.
 
 % \begin{enumerate}[nosep, label=\textbf{G\arabic*}, align=parleft, leftmargin=*]
 %     \item Enhance the reliability of observations;
