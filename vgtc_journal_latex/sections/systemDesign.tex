@@ -1,5 +1,5 @@
 \section{System Design\label{sec:systemDesign}}
-In this section, we give an overview of visual encoding for blazar data and the visual exploration framework of TimeTubesX.
+In this section, we provide an overview of visual encoding for blazar data and the visual exploration framework of TimeTubesX.
 % We introduce a 3D tube expression of our previous TimeTubes~\cite{Fujishiro2018} into TimeTubesX.
 
 \begin{figure}[tb]
@@ -29,19 +29,19 @@ In this section, we give an overview of visual encoding for blazar data and the 
     \end{minipage}
     \caption{Spatial mapping in the TimeTubes view. 
     (a)~Observation values of polarization decide the position and shape of an ellipse;
-    (b)~Observation values of intensity and color colorize the ellipse with reference to a colormap; and
-    (c)~The neighboring ellipses are smoothly connected in chronological order to yield a tube shape.}
+    (b)~observation values of intensity and color colorize the ellipse with reference to a colormap; and
+    (c)~the neighboring ellipses are smoothly connected in chronological order to yield a tube shape.}
     \label{fig:howtoplot}
 \end{figure}
 \subsection{Visual Encoding for Blazar Data}\label{sec:VisualEncoding}
 \begin{figure*}
     \centering
     \includegraphics[width=.99\linewidth]{vgtc_journal_latex/figures/workflowGray.pdf}
-    \caption{Visual exploration framework of TimeTubesX. Users can load multiple datasets into a single exploration session through visual data fusion. (A)~Users specify a query to extract features of interest; (B)~Query results are sorted by relevance; (C)~Individual results can be analyzed in high detail and compared to each other; (D)~An extraction result can be re-used as an input for a new visual query; and (E)~Users can visually explore the results in the TimeTubes and scatterplots views.}
+    \caption{The visual exploration framework of TimeTubesX. Users can load multiple datasets into a single exploration session through visual data fusion. (A)~Users specify a query to extract features of interest; (B)~query results are sorted by relevance; (C)~individual results can be analyzed in high detail and compared to each other; (D)~an extraction result can be re-used as an input for a new visual query; and (E)~users can visually explore the results in the TimeTubes and scatterplots views.}
     \label{fig:framework}
 \end{figure*}
 Astronomers have used three animated scatterplots with error bars to visualize their multi-dimensional, time-dependent observations (see the accompanying video): one for time variation of $I$, termed \textit{light curve}, another for the Stokes plane, and a third for the correlation between $I$ and $C$.
-During the animation, individual observations are highlighted in red in the order of observation.
+During the animation, individual observations are highlighted in red in order of observation.
 % The animated scatterplots are comprised of three scatterplots, one for the time variation of $I$, termed \textit{light curve}, another for the Stokes plane, and a third for the correlation between $I$ and $C$.
 % The \textit{light curve} (\autoref{fig:traditionalMethod}~(a)) is the most important plot for astronomers, and shows the variation of $I$ over time. 
 % (b) shows the Stokes plane,
@@ -50,27 +50,28 @@ During the animation, individual observations are highlighted in red in the orde
 
 Instead of animating multiple 2D scatterplots,
 TimeTubesX expresses blazar observations as a single 3D volumetric tube. 
-In the following, we give a short overview of \emph{TimeTubes view}, which was originally proposed in our previous work~\cite{Fujishiro2018}.
+In the following part, we give a short overview of the \emph{TimeTubes view}, which was originally proposed in our previous work~\cite{Fujishiro2018}.
 % We call the view of the 3D volumetric tube \emph{TimeTubes view}.
-The TimeTubes view, that is explained in Fig.~\ref{fig:howtoplot}, allows users to see correlations and variations of variables over time at a glance, as illustrated in Fig.~\ref{fig:framework}~(E).
-Currently, users need to import csv files with column names from their local environment into TimeTubesX.
+The TimeTubes view %, that is explained in Fig.~\ref{fig:howtoplot}, 
+allows users to see correlations and variations of variables over time at a glance, as illustrated in Fig.~\ref{fig:framework}~(E).
+In the current version, users need to import .csv files with column names from their local environment into TimeTubesX.
 %as shown in TimeTubes view in the lower right of \autoref{fig:framework}.
 %
 We use a left-handed coordinate system to assign $q$ and $u$ to the $x$ and $y$ axes, respectively, and time $t$ to the $z$ axis.
 %of the visualization domain, $u$ to $y$ axis, and $t$ to $z$ axis.
-We encode the polarization parameters ($q$, $u$, $\epsilon_q$, $\epsilon_u$) at each timestamp $t$ as an ellipse centered at $(x, y, z) = (q(t), u(t), t)$ with width $2\epsilon_q(t)$ and height $2\epsilon_u(t)$, as depicted in Fig.~\ref{fig:howtoplot}~(a). 
-Therefore, the $x$--$y$ location of an ellipse indicates the polarization at a certain time stamp, while the size of the ellipse indicates the uncertainty in the measurement.
-To properly render a 3D tube, we set the value range of the Stokes plane in the TimeTubes view with reference to standard deviations of $q$ and $u$ of the datasets. 
-In the current TimeTubes view, we empirically map a single day to a single voxel along the $z$ axis direction.
+We encode the polarization parameters ($q$, $u$, $\epsilon_q$, $\epsilon_u$) at each timestamp $t$ as an ellipse centered at the point $(x, y, z) = (q(t), u(t), t)$ with a width of $2\epsilon_q(t)$ and a height of $2\epsilon_u(t)$, as depicted in Fig.~\ref{fig:howtoplot}~(a). 
+Therefore, the $x$--$y$ location of an ellipse indicates the polarization at a certain time stamp, while the size of the ellipse indicates the uncertainty of the measurement.
+To properly render a 3D tube, we set the value range of the Stokes plane in the TimeTubes view with reference to the standard deviations of $q$ and $u$ in the datasets. 
+In the current TimeTubes view, we empirically map a single day to a single voxel along the $z$ axis.
 %
-We colorize the ellipses according to $I(t)$ and $C(t)$ based on a user-defined 2D colormap (Fig.~\ref{fig:howtoplot}~(b)). 
+We colorize the ellipses according to $I(t)$ and $C(t)$ as based on a user-defined 2D colormap (Fig.~\ref{fig:howtoplot}~(b)). 
 The TimeTubes view connects neighboring ellipses in chronological order, using centripetal Catmull-Rom splines to form a 3D volumetric tube (Fig.~\ref{fig:howtoplot}~(c)). 
 To further reflect the reliability of the observations, the TimeTubes view offers an adjustable opacity transfer function.
 Multiple concentric tubes with different transparencies (i.e., higher opacities for inner tubes) compose a single tube that allows users to intuitively perceive the uncertainties of observations.
-For instance, a time interval with small errors looks like an opaque tube, whereas time intervals with large errors look more semi-transparent and fuzzy.
+Specifically, a time interval with small errors looks like an opaque tube, whereas a time interval with large errors looks more semi-transparent and fuzzy.
 
 Compared with the initial animated scatterplots,
-the TimeTubes view provides a more uncertainty-aware visual encoding for the analysis of blazar behaviors (\textbf{T1}).
+the TimeTubes view provides more uncertainty-aware visual encoding for the analysis of blazar behaviors (\textbf{T1}).
 Astronomers do not need to scrutinize multiple plots to understand correlations between variables
 or move sliders back and forth %in time 
 to track time variations.
@@ -109,22 +110,22 @@ Fig.~\ref{fig:framework} illustrates our visual exploration framework.
 %
 The user workflow starts with visual data fusion~\cite{Fujishiro2018} to create a unified dataset for all subsequent analysis steps (\textbf{T2}).
 %All functions can be applied to the unified dataset by visual data fusion~\cite{Fujishiro2018}.
-For initial feature and pattern detection (A), users can either rely on automatic feature extraction methods for well-known blazar behaviors (\textbf{T3}) or can define their own visual queries for a ROI/SOI (\textbf{T4}, \textbf{T5}).
+For initial feature and pattern detection (A), users can either rely on automatic feature extraction methods for well-known blazar behaviors (\textbf{T3}) or define their own visual queries for a ROI/SOI (\textbf{T4}, \textbf{T5}).
 %For the purpose of the feature extraction, in (A), the user specifies a feature which he/she wants to find out by setting parameters, ROI, or SOI.
 The system ranks the results of the feature and pattern detection stage and shows the ranked matches (B).
 %the query specified in (A) and shows their overview (B).
-Users can sort the results, e.g., to focus on time intervals that have the largest rotation or are the most similar to the input pattern.
+Users can sort the results to, for instance, focus on time intervals that have the largest rotation or are the most similar to the input pattern.
 %By changing the order of the results, 
 %he/she can easily notice which time interval has the biggest rotation 
 %or most similar to the input pattern, for instance.
 %
 % By selecting one or several results of interest, users can analyze, compare, and annotate selected time intervals in more detail (C). 
 %By selecting one of the results, he/she may refer to the details of the result and attach an annotation to it if needed (C).
-The detailed analysis (C) helps users understand the behavior of the extracted time intervals and classify their results. 
+The detailed analysis (C) helps users understand the behavior at the extracted time intervals and classify the results. 
 % Annotations allow users to document their analysis process and to share their results with others.
 %These details are helpful for him/her understand the the behaviors of the extracted time intervals and
 %the annotation supports him/her in recalling his/her analysis process, classify the results, and share the results with other users.
-To support iterative refinement of queries, users can build a follow-up query based on the result of a query (D). It allows users to find out time intervals similar to the result (\textbf{T4}).
+To support iterative refinement of queries, users can build a follow-up query based on the result of a query (D). It allows users to find time intervals similar to the result (\textbf{T4}).
 %for another query in the next interactive feature extraction phase (D).
 We call this \textit{fact-guided querying}, as it enables users to refine extraction results guided by previously detected features.
 To analyze extracted time intervals in more detail, users can employ
@@ -139,7 +140,7 @@ the uncertainty-aware TimeTubes view (\textbf{T1}) as well as multiple linked sc
 % One of the main contributions of TimeTubesX lies in the inherent support for the automatic feature extraction and dynamic visual querying for multi-dimensional, time-dependent blazar datasets.
 Fig.~\ref{fig:UIFeatureExtraction} shows our feature and pattern detection user interface. 
 The query specification panel (A) allows users %to specify what to extract and 
-to build a query with simple interactions, either by selecting what to extract, picking a part of data as an input, or sketching time variation patterns.
+to build a query with simple interactions either by selecting what to extract, picking a part of data as an input, or sketching time variation patterns.
 % In \autoref{fig:UIFeatureExtraction}, (A) shows an on-going query-by-sketch user interaction.
 After running a similarity search, 
 TimeTubesX ranks and filters extraction results according to the parameters in panel (B),
@@ -150,16 +151,16 @@ The distance distribution histogram in panel (B) helps users to further filter t
 % we use a histogram to provide an overview of the distribution of distances returned by the similarity search.
 % By adjusting the gray area on the histogram, users are allowed to alter the number of displayed results. 
 The timeline in panel (C) gives an overview of the temporal distribution of the results.
-Users are able to recognize groups of results sharing identical time points and features of the temporal distribution.
+Users are able to recognize groups of results sharing identical time points and temporal distribution features.
 % The thumbnails of all relevant (i.e., non-filtered) results are shown in panel (E) to give users an intuitive overview of their query results.
-When selecting an individual thumbnail, TimeTubesX show detailed information on that result in panel (D), including exact time stamps and the distance between the query and the result.
+When selecting an individual thumbnail, TimeTubesX shows a detailed information on the corresponding result in panel (D), including exact time stamps and the distance between the query and the result.
 % The detailed information is helpful for users' deeper understanding of the extracted time interval.
 To re-utilize the query, compare multiple query results, and share the query and their results with other users, 
-TimeTubesX allows users to export and import queries and their results in the form of JSON file in a custom format for TimeTubesX.
+TimeTubesX allows users to export and import queries and their results in the form of JSON files (a custom format for TimeTubesX).
 When importing previous query results,
 panel (F) shows a summary of the query used in the previous process and panel (C) shows another timeline for the imported query results.
 
-Fig.~\ref{fig:querySpecificationPanel} shows the query specification panel in each mode of the feature and pattern detection.
+Fig.~\ref{fig:querySpecificationPanel} shows the query specification panels for each mode of the feature and pattern detection.
 
 % MERGED VERSION
 % The design of TimeTubesX supports the visualization tasks outlined in \autoref{sec:domainGoalsandTasks}.
@@ -187,7 +188,7 @@ Fig.~\ref{fig:querySpecificationPanel} shows the query specification panel in ea
 
 To better demonstrate our feature and pattern detection methods, we will use a synthetic dataset (see Fig.~\ref{fig:synthesisData}) as a running example in Sections~\ref{sec:automaticExtraction} and \ref{sec:visualQuery}.
 %for illuminating the feature extraction, as illustrated in \autoref{fig:synthesisData}.
-It contains four large peaks in $I$ as highlighted by orange diamonds in (a), three small circular patterns on the Stokes plane (red patterns in (b)), three big rotations (green), and three narrow/rough-edged patterns (blue).
+It contains four large peaks in $I$, as highlighted by orange diamonds in (a), three small red circular patterns on the Stokes plane in (b), three large green rotations , and three narrow/rough-edged blue patterns.
 
 % \begin{figure}[H]
 %     \centering

@@ -1,15 +1,15 @@
 \section{Dynamic Visual Querying}\label{sec:visualQuery}
-To facilitate astronomers' easy discovery of time intervals similar to a ROI/SOI (\textbf{G3}) or those validating specific hypotheses (\textbf{G4}), 
+To facilitate astronomers' discovery of time intervals similar to a ROI/SOI (\textbf{G3}) or those validating specific hypotheses (\textbf{G4}), 
 TimeTubesX provides two different user-initiative visual query interfaces: query-by-example (QBE) and query-by-sketch (QBS).
-Both are designed to help users identify interesting similar patterns (\textbf{T4}), and our matching algorithm allows for a fuzzy search (\textbf{T5}).
+Both are designed to help users identify similar patterns of interest (\textbf{T4}), and our matching algorithm allows for a fuzzy search (\textbf{T5}).
 % those more subtle than the well-known patterns described in \autoref{sec:automaticExtraction}.
 
 \subsection{Query-by-Example}\label{sec:QBE}
 % background and overview
-While the TimeTubes view helps users analyze time variation patterns,
-it still remains challenging for users to build queries for multi-dimensional, time-dependent data.
-Our QBE interface allows users to specify an interesting behavior as a ROI with simple interactions through the TimeTubes or scatterplots views.
-Users can not only pick a part of time-series data as an input for a query but also flexibly select specific variables that should be used in the query to reflect their intentions. 
+While the TimeTubes view helps users analyze time variations,
+it remains challenging for users to build queries for multi-dimensional, time-dependent data.
+Our QBE interface allows users to specify a notable behavior as a ROI with simple interactions through the TimeTubes or scatterplots views.
+Users can pick a part of time-series data as an input for a query as well as flexibly select specific variables that should be queried about to reflect their intentions. 
 This allows users to easily and intuitively search long-term datasets for interesting patterns with minimal required user inputs.
 
 Fig.~\ref{fig:querySpecificationPanel} (B) shows our QBE interface.
@@ -17,7 +17,7 @@ Fig.~\ref{fig:querySpecificationPanel} (B) shows our QBE interface.
 To facilitate visual verification by users, a time interval selected through the TimeTubes or scatterplots views in (2, red highlight) is automatically extracted and displayed in the query panel (1).
 % The selected time interval is highlighted in red in both views.
 % Our system automatically extracts the selected time interval and displays it in the query panel (2) to facilitate visual verification by users.
-After selecting the initial time interval, users can then fine-tune and adjust their query by selecting the variables that should be queried on. 
+After selecting the initial time interval, users can then fine-tune and adjust their query by selecting the variables that should be queried about. 
 This is crucial for effective support of queries on multi-dimensional data.
 Based on the selected variables, 
 our system interactively updates the appearance of the 3D tube for the selected time interval in (1), visually encoding only currently selected variables.
@@ -41,7 +41,7 @@ For example, when users remove the variable $C$ from the query, the tube loses c
 % Based on the selected variables, 
 % our system interactively updates the appearance of the 3D tube for the selected time interval, to only visually encode the currently selected variables.
 % For example, when the users removes $C$ from the query, the tube loses color variation and becomes a gray tube, as shown in part (2).
-After defining the query, users can adjust main parameters (i.e., normalization and polar coordinates options) for our matching algorithm (see Section~\ref{sec:matchingAlgorithm}). 
+After defining the query, users can adjust the main parameters (e.g., normalization and polar coordinates options) for our matching algorithm (see Section~\ref{sec:matchingAlgorithm}). 
 %We explain the matching algorithm between the query and time intervals in \autoref{sec:matchingAlgorithm}.
 %
 % Both options enable a fuzzy pattern search.
@@ -51,6 +51,20 @@ After defining the query, users can adjust main parameters (i.e., normalization 
 % With the polar coordinates option, 
 % $q(t)$ and $u(t)$ are converted into polar coordinates ($r-\theta$ domain) before computing similarities.
 % Subsequently, the pattern search will also extract patterns that rotating around the origin of the Stoke plane.
+
+\textsf{Experimental results.\ } We verified the effectiveness of our QBE method using our synthetic data.
+The red circular patterns in Fig.~\ref{fig:synthesisData}~(b) have a similar shape but different time lengths, scales, or locations in the Stokes plane.
+We used the leftmost red time interval in (b) as an input query, as shown in Fig.~\ref{fig:QBEDemodata}~(a).
+We selected $q$ and $u$ as active variables and used the normalization and polar coordinates options to detect time intervals with different scales or different positions.
+The length of the target time interval was set to 5 to 20 days.
+% Due to the small size of the synthetic dataset, we set the sliding window step size to 2. 
+We used $\rm{DTW}_{\rm D}$ as a distance function.
+Note that we detail the options and parameters related to the matching process in Section~\ref{sec:matchingAlgorithm}.
+Fig.~\ref{fig:QBEDemodata}~(b) shows the top three results of our QBE in (a).
+The color of the rectangles corresponds to those used in Fig.~\ref{fig:synthesisData}~(b).
+We were able to detect all time intervals with a similar shape in our synthetic dataset.
+%The time intervals with a similar shape were definitely detected by the proposed QBE.
+Note that the time interval specified for the query itself is omitted from the results.
 
 \begin{figure}[tb]
     \centering
@@ -65,34 +79,20 @@ After defining the query, users can adjust main parameters (i.e., normalization 
         \footnotesize{\sf(b)~Results for the query in (a).}
     \end{minipage}
     \caption{QBE for our synthetic dataset in Fig.~\ref{fig:synthesisData}. 
-        We pick the time interval with a small circular pattern (the leftmost red pattern in Fig.~\ref{fig:synthesisData}~(b)) for a query in (a). 
-        Our method exactly extracted other time intervals with small circular patterns (the two red patterns from the right in Fig.~\ref{fig:synthesisData}~(b)).
+        We chose the time interval with a small circular pattern (the leftmost red pattern in Fig.~\ref{fig:synthesisData}~(b)) for a query in (a). 
+        Our method precisely extracted other time intervals with small circular patterns (the two red patterns from the right in Fig.~\ref{fig:synthesisData}~(b)).
         The outline color corresponds to the color in Fig.~\ref{fig:synthesisData}~(b).}
     \label{fig:QBEDemodata}
 \end{figure}
-\textsf{Experimental results.\ } We verified the effectiveness of our QBE method with our synthetic data.
-The red circular patterns in Fig.~\ref{fig:synthesisData}~(b) have a similar shape but different time lengths, scales, or locations in the Stokes plane.
-We used the leftmost red time interval in (b) as an input query, as shown in Fig.~\ref{fig:QBEDemodata}~(a).
-We selected $q$ and $u$ as active variables and used the normalization and polar coordinates options to detect time intervals with different scales or different positions.
-The length of the target time interval was set to 5 to 20 days.
-% Due to the small size of the synthetic dataset, we set the sliding window step size to 2. 
-We used $\rm{DTW}_{\rm D}$ as a distance function.
-Note that we detail the options and parameters related to the matching process in Section~\ref{sec:matchingAlgorithm}.
-Fig.~\ref{fig:QBEDemodata}~(b) shows the top three results of our QBE query.
-The color of the rectangles corresponds to those used in Fig.~\ref{fig:synthesisData}~(b).
-We were able to detect all time intervals with a similar shape in our synthetic dataset.
-%The time intervals with a similar shape were definitely detected by the proposed QBE.
-Note that the time interval specified for the query itself is omitted from the results.
-
 \subsection{Query-by-Sketch}\label{sec:QBS}
 % background and overview
 TimeTubesX also allows users to query their data by manually drawing time variation patterns onto a 2D sketch interface.
-Our QBS interface provides an intuitive and accessible way for users to specify patterns for complex multi-dimensional, semi-structured, time-dependent blazar datasets and to test their high-level hypotheses.
+Our QBS interface provides an intuitive and accessible way for users to specify patterns for multi-dimensional, semi-structured, time-dependent blazar datasets and validate their high-level hypotheses.
 % To allow users to easily draw a pattern for multi-dimensional, semi-structured, time-dependent blazar datasets on a 2D sketch pad and test their abstract hypotheses of blazar behaviors, 
 % we provide a novel QBS interface.
-Rouxel et al.~\cite{Rouxel2014} state that an input trajectory by analog gestures are characterized by three dimensions: space, time, and force.
+Rouxel et al.~\cite{Rouxel2014} state that an input trajectory by analog gestures is characterized by three dimensions: space, time, and force.
 % To limit the complexity for users, our interface detects three input parameters: $x$ position, $y$ position, and either speed \emph{or} force.
-To maintain the intuitiveness, 
+To realize intuitive interactions, 
 we use space to determine the $x$ and $y$ positions of the stroke
 and use either drawing speed or drawing pressure to define the stroke width 
 so that users can describe time variations of multiple dimensions simultaneously.
@@ -108,12 +108,13 @@ First, users define which variables are assigned to the $x$ and $y$ axes of the 
 Second, they sketch a time variation pattern on a 2D sketch pad UI (3),
 where the stroke is shown in black and its width is shown in blue.
 % After drawing, our system automatically converts the sketch into a Cubic Bezier curve and beautifies the input stroke to remove undesired artifacts due to shaky input. 
-After drawing, our system automatically beautifies the input stroke by fitting it to a cubic Bezier curve with as few segments as possible with the \texttt{simplify} method from Paper.js~\cite{paper_framework}.
+% After drawing is completed, 
+Afterward, our system automatically beautifies the input stroke by fitting it to a cubic Bezier curve with as few segments as possible by using the \texttt{simplify} method in Paper.js~\cite{paper_framework}.
 After their initial drawing, users can further adjust the sketch
-by adding, removing, or moving control points, or by changing the stroke width.
-Furthermore, users are allowed to assign filtering constraints to each of the control points on the input sketch, as shown in part (4).
+by adding, removing, or moving control points or by changing the stroke width.
+Users are also allowed to assign filtering constraints to each of the control points on the stroke, as shown in part (4).
 % By clicking on a control point, a popup panel appears next to the selected point, as shown in part (4).
-Users can define value ranges for each variable at the control point, which will be subsequently used when evaluating the query.
+They can define value ranges for each variable at the control point, which the algorithm will subsequently use when evaluating the query.
 
 % Our QBS interface realizes a fuzzy pattern search based on hand-drawn user input to flexibly find interesting time intervals or test new hypotheses.
 % TODO: Missing general intro that we use a 2D panel and can use speed, pressure for additional parameters, to intuitively and quickly sketch queries. represented as curves/splines. 
@@ -161,7 +162,7 @@ Users can define value ranges for each variable at the control point, which will
     \end{minipage}
     \begin{minipage}{0.49\linewidth}
         \centering
-        \footnotesize{\sf (a)~Hand-drawn sketch query for a small circular pattern.}
+        \footnotesize{\sf (a)~A hand-drawn sketch query for a small circular pattern.}
     \end{minipage}
     \begin{minipage}{0.49\linewidth}
         \centering
@@ -181,28 +182,29 @@ Users can define value ranges for each variable at the control point, which will
     \end{minipage}
     \caption{QBS results for our synthetic dataset in Fig.~\ref{fig:synthesisData}.
         %The outline color corresponds to the color in \autoref{fig:synthesisData}~(b).
-        With a hand-drawn sketch in (a), an unexpected result is highly ranked (white outline) in (c). 
+        On the basis of a hand-drawn sketch in (a), an unexpected result is highly ranked (white outline) in (c). 
         With a sketch based on actual data values (b), no unexpected results appear, as illustrated in (d).
         % Upon further refinement of the initial sketch to more closely resemble actual data values (b), no unexpected results appear anymore.
         }
     \label{fig:QBSDemodata}
 \end{figure}
 %
-\textsf{Experimental results.\ } We demonstrated the effectiveness of our QBS interface with our synthetic dataset.
+\textsf{Experimental results.\ } We evaluated the effectiveness of our QBS method using our synthetic data.
 %To demonstrate the effectiveness of our QBS interface,
 %we have applied QBS to the synthesis data.
 %To find out the time intervals with a small circular pattern,
-First, we made a query with the sketch shown in Fig.~\ref{fig:QBSDemodata}~(a) to extract time intervals with small circular patterns. 
-The sketch pad plane corresponds to the Stokes plane and, for simplicity, the stroke width is not used.
-To detect time intervals with a similar shape but different positions or scales, we used the normalization and polar coordinates option.
+% First, we made a query with the sketch shown in Fig.~\ref{fig:QBSDemodata}~(a) to extract time intervals with small circular patterns. 
+First, we sketched a pattern shown in Fig.~\ref{fig:QBSDemodata}~(a) to extract time intervals with small circular patterns.
+The sketch pad plane corresponds to the Stokes plane, and for simplicity, the stroke width is not used.
+To detect time intervals with a similar shape but different positions or scales, we used the normalization and polar coordinates options.
 % Due to the small size of the synthetic dataset, we set the sliding window step size to 2.
-Fig.~\ref{fig:QBSDemodata}~(c) shows the top eight results of our QBS method for the query in (a).
-The outline color of each thumbnail image matches the color of the corresponding circular pattern in Fig.~\ref{fig:synthesisData}~(b).
+Fig.~\ref{fig:QBSDemodata}~(c) shows the top eight results for our QBS in (a).
+The outline color of each thumbnails matches the color of the corresponding pattern in Fig.~\ref{fig:synthesisData}~(b).
 % We enclose the results that include the small circular pattern in rectangles 
 % The outline color of the individual results corresponds to the colors used in the circular patterns in
 % whose color corresponds to the colors used in the circular patterns in \autoref{fig:synthesisData}~(b).
-All three time intervals highlighted in red in Fig.~\ref{fig:synthesisData}~(b) were properly extracted.
-Nevertheless, an unexpected result (i.e., the thumbnail with no outline color in Fig.~\ref{fig:synthesisData}~(c)) was highly ranked as a candidate similar to the input pattern due to the ambiguities of a hand-drawn sketch.
+All three time intervals highlighted in red in Fig.~\ref{fig:synthesisData}~(b) were precisely extracted.
+However, an unexpected result (i.e., the thumbnail with white outline in Fig.~\ref{fig:synthesisData}~(c)) was highly ranked as a candidate similar to the input sketch due to the ambiguities of the hand-drawn sketch.
 We address this problem by incorporating fact-guided querying (see Section~\ref{sec:factDrivenQuerying}). 
 
 %
@@ -229,19 +231,19 @@ We address this problem by incorporating fact-guided querying (see Section~\ref{
 %     \label{fig:DTW}
 % \end{figure}
 %
-There are many different methods to compute the distance between two time series, such as the Euclidean distance, uniform scaling, or dynamic time warping (DTW)~\cite{Berndt1994}.
+There are many different methods for computing the distance between two time series, such as Euclidean distance, uniform scaling, and dynamic time warping (DTW)~\cite{Berndt1994}.
 TimeTubesX uses DTW
 because it aligns two time series elastically and thus supports the comparison of time series with different lengths.
-Additionally, it can compute the distance between two time series that are similar, but locally out of phase.
+Additionally, it can compute the distance between two time series that are similar but locally out of phase.
 %more intuitively even if they are out of phase in the time direction. 
 According to Eichmann and Zgraggen~\cite{Eichmann2015}, the DTW similarity measurement seems to most closely match human perception.
 There are multiple solutions for dealing with multi-dimensional data in DTW. 
-TimeTubesX implements two options, ${\rm DTW}_{\rm I}$ (independent) and ${\rm DTW}_{\rm D}$ (dependent), both based on the work of Shokoohi-Yekta et al.~\cite{Shokoohi-Yekta2015}.
+TimeTubesX implements two options, ${\rm DTW}_{\rm I}$ (independent) and ${\rm DTW}_{\rm D}$ (dependent), both of which are based on the work of Shokoohi-Yekta et al.~\cite{Shokoohi-Yekta2015}.
 %${\rm DTW}_{\rm Independent}$ (${\rm DTW}_{\rm I}$) and ${\rm DTW}_{\rm Dependent}$ (${\rm DTW}_{\rm D}$). 
 %The ideas come from Shokoohi-Yekta et al.~\cite{Shokoohi-Yekta2015}.
 
 ${\rm DTW}_{\rm I}$ computes the distance between two time series for each dimension of the data separately. %(see Fig.~\ref{fig:DTW}~(a)). 
-In the final step, it adds up all those individual distances to the final distance measure.
+In the final step, it adds up all the individual distances to produce the final distance measure.
 %${\rm DTW}_{\rm I}$ makes each dimension of time series warp irrespective of other dimensions and then cumulates the distances of all dimensions, as illustrated in \autoref{fig:DTW}~(a).
 % ${\rm DTW}_{\rm I}$ defines the distance between two time series as a cumulative distance of all dimensions in the time series.
 % In other words, it makes each dimension warp irrespective of other dimensions, as illustrated in \autoref{fig:DTW}~(a).
@@ -254,9 +256,9 @@ Consequently, this approach focuses more on the similarity of each dimension and
 ${\rm DTW}_{\rm D}$, on the other hand, computes the distance between two data samples directly over all dimensions (i.e., as Euclidean distance in $n$-dimensional space).
 Therefore, this method focuses more on correlations among the different dimensions of a time series and less on the similarities of individual dimensions. 
 %takes more account of correlations among dimensions than similarity of each dimension.
-By default, our system uses ${\rm DTW}_{\rm D}$ because correlations among variables are significantly important for blazar behavior analysis.
+By default, our system uses ${\rm DTW}_{\rm D}$ because correlations among variables are important for blazar behavior analysis.
 % Comprehensive illustrations for ${\rm DTW}_{\rm I}$ and ${\rm DTW}_{\rm D}$ appear in \cite[Fig. 1]{Shokoohi-Yekta2015}.
-Readers are recommended to see \cite[Fig. 1]{Shokoohi-Yekta2015} for comprehensive illustrations of ${\rm DTW}_{\rm I}$ and ${\rm DTW}_{\rm D}$.
+Readers are recommended to consult \cite[Fig. 1]{Shokoohi-Yekta2015} for comprehensive illustrations of ${\rm DTW}_{\rm I}$ and ${\rm DTW}_{\rm D}$.
 % We recommend readers to see \cite[Fig. 1]{Shokoohi-Yekta2015} for comprehensive illustrations of ${\rm DTW}_{\rm I}$ and ${\rm DTW}_{\rm D}$.
 We use a sliding window approach in our matching algorithm.
 %, the interactive feature extraction picks up a time interval from long-term data 
@@ -265,13 +267,13 @@ Users can set the window size and the step size of the sliding window and also s
 % The warping window size determines the largest allowed temporal shift 
 in the process of finding the best alignment between the query and time series.
 Users can specify these parameters at the bottom of the query specification panel in Fig.~\ref{fig:UIFeatureExtraction}~(A).
-Note that multiple time intervals with different lengths but including the same time points can be presented in the extraction results (see Fig.~\ref{fig:QBEDemodata} and Fig.~\ref{fig:QBSDemodata}~(c) and (d)). %because of the use of a sliding window approach.
+Note that multiple time intervals with different lengths but that include the same time points can be presented in the extraction results (see Fig.~\ref{fig:QBEDemodata} and Fig.~\ref{fig:QBSDemodata}~(c) and (d)). %because of the use of a sliding window approach.
 The timelines in Fig.~\ref{fig:UIFeatureExtraction}~(C) help users recognize such time intervals. 
 % Users can identify the groups of the extraction result by giving a glance at the timeline.
 
 Normalization and polar coordinates options enable a fuzzy pattern search.
 %The Normalization option and polar coordinates option realize fuzzy pattern search.
-The normalization option triggers the system to normalize a query and time intervals into the range of $[0, 1]$.
+The normalization option instructs the system to normalize a query and time intervals into the range of $[0, 1]$.
 Subsequently, the pattern search places great significance on the \emph{shape} of the time variations, whereas the actual value ranges will be ignored.
 With the polar coordinates option, 
 $q(t)$ and $u(t)$ are converted into polar coordinates ($r-\theta$ domain) before computing similarities.
@@ -280,20 +282,18 @@ Subsequently, the pattern search with the normalization and polar coordinates op
 %
 %
 \subsection{Fact-Guided Querying}\label{sec:factDrivenQuerying}
-To support quick and iterative query refinement, TimeTubesX allows users to re-utilize individual extraction results as an input for follow-up queries, a process we termed \emph{fact-guided querying}.
+To support quick and iterative query refinement, TimeTubesX allows users to re-utilize individual extraction results as an input for follow-up queries, a process we have termed \emph{fact-guided querying}.
 % We call this \emph{fact-driven querying},  
 % since it allows users to easily search for time intervals similar to actual data measurements, implying that it makes it easy for users to find common features.
 By iteratively updating a query, users can, in a step-by-step manner, identify more observable time intervals that reflect their intentions.
 % In other words, the feature extraction and visual query interface realizes a self-organizing query refinement.
 % With a refined query, users can find more observable time intervals which reflect their intentions more. 
-Therefore, fact-guided querying contributes immensely to drilling-down into data as a part of the visual exploration framework of TimeTubesX in Fig.~\ref{fig:framework}.
+Therefore, fact-guided querying contributes immensely to drilling down into data as a part of the visual exploration framework of TimeTubesX in Fig.~\ref{fig:framework}.
 In QBE, users can switch variables used in the matching process and modify the time range of the query, while in QBS, users can adjust the scale, shape, and axis of the input query or add further filtering constraints.
-% initial interesting time intervalを見つける手間を省いたり？ユーザの意図をより反映したtime intervalに基づいてクエリを作成したり？白紙からスケッチを書かないで、実際の値に基づいて任意のスケッチを作成したりできる
-Thus, it helps users perform further pattern searches based on the interesting time interval found in the previous process or create a sketch-based query from references to actual data measurements instead of from a blank sketch pad.
+Thus, fact-guided querying helps users perform further pattern searches based on a time interval of interest found in the previous process or create a sketch-based query from references to actual data measurements instead of from a blank sketch pad.
 % not from a blank sketch pad but with reference to actual data measurements.
 
-Our system allows users to build a fact-guided query with simple interactions, i.e.,
-dragging an extraction result either into the QBE interface (part (2) in Fig.~\ref{fig:querySpecificationPanel}~(B)) or into the sketch pad of the QBS interface (part (3) in Fig.~\ref{fig:querySpecificationPanel}~(C)).
+Our system allows users to build a fact-guided query with simple interactions by, for example, dragging an extraction result either into the QBE interface (part (2) in Fig.~\ref{fig:querySpecificationPanel}~(B)) or into the sketch pad of the QBS interface (part (3) in Fig.~\ref{fig:querySpecificationPanel}~(C)).
 %
 %Due to the fact-driven querying function, they can 
 %In particular, when changing the axis of the sketch pad, 
@@ -301,21 +301,21 @@ dragging an extraction result either into the QBE interface (part (2) in Fig.~\r
 %The sketch is 2D, but multi-dimensional data is stored internally as a vital part of a query.
 
 
-\textsf{Experimental results.\ } We illustrated the usefulness of the fact-guided querying approach with our synthetic dataset.
+\textsf{Experimental results.\ } We confirmed the usefulness of the fact-guided querying approach with our synthetic data.
 As discussed in Section~\ref{sec:QBS}, 
 hand-drawn sketch queries, such as Fig.~\ref{fig:QBSDemodata}~(a), work well for finding time intervals with a specific feature,
 but ambiguities of hand-drawn sketches may sometimes lead to unexpected results, as shown in (c).
 %
 % \autoref{fig:QBSDemodata}~(a) shows an initial hand-drawn query. %and search for time intervals with a similar feature.
-If the extraction results for the query in (a) sufficiently represent users' intentions, one of the results can be used as an input to refine results of the next visual query.
+If the extraction results for the query in (a) sufficiently represent users' intentions, one of the results can be used as an input to refine the results of the next visual query.
 %When we find time intervals which sufficiently validate our intention, we can use the one of the results for yet another query of the visual query.
 % For the query in (b), 
-We chose the top left result of (c) and used it as an input to our QBS method, as shown in (b). 
+We chose the top left result of \ref{fig:QBSDemodata}~(c) and used it as an input for our QBS method, as shown in (b). 
 %and converted it for a query in QBS.
 The sketch pad plane in (b) coincides with the Stokes plane.
-Thereafter, we ran QBS in the same parameter settings as the example in Section~\ref{sec:QBS}.
+Thereafter, we ran QBS using the same parameter settings as the example in Section~\ref{sec:QBS}.
 As shown in the top eight extraction results in (d),  % of QBS with the query in (b).
-this refined query in (b) no longer produces any highly-ranking outliers or unexpected results.
+this refined query in (b) no longer produces any high-ranking outliers or unexpected results.
 % does not result in highly ranking any outliers or unexpected results any longer.
 %As the red rectangles illustrate,
 %unexpected results were not highly ranked any longer.

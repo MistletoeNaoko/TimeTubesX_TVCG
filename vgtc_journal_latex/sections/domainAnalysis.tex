@@ -1,33 +1,33 @@
 \section{Domain Analysis}\label{sec:domainAnalysis}
-In this section, we specify our blazar observation data and define domain-specific goals and visualization tasks that were identified with our domain experts. 
+In this section, we specify our blazar observation data and define domain-specific goals and visualization tasks that were identified in consultation with our domain experts. 
 
 \subsection{Blazar Observation Data}\label{sec:BlazarData}
-Multiple observatories worldwide collect blazar data, however, their observed properties or units of measurement differ depending on telescopes being used. 
+Multiple observatories worldwide collect blazar data; however, their observed properties or units of measurement differ depending on the telescopes being used. 
 %are different depending on the used telescopes.
 To reduce uncertainties due to missing observational data and observation errors,
 TimeTubesX allows users to fuse multiple datasets for the same blazar from different observatories 
 through the automatic handling of potentially different definitions of observed variables~\cite{Fujishiro2018}.
 Thus, users can, for example, include data from Hiroshima University and the University of Arizona in the same visualization session. 
-TimeTubesX is designed to mainly process datasets acquired by Hiroshima Astrophysical Science Center at Hiroshima University,
+TimeTubesX is designed to primarily process datasets acquired by the Hiroshima Astrophysical Science Center at Hiroshima University,
 which uses a $1.5\mathrm{m}$ Kanata telescope. 
 %taking full care of discrepancy in the definition of variables~\cite{Fujishiro2018}.
 
 % Observation datasets
-Photometric and polarimetric datasets of Hiroshima University include six time-dependent variables: $q$, $u$, $\epsilon_q$, and $\epsilon_u$ for polarization (Fig.~\ref{fig:blazar} (A)), $I$ for intensity (Fig.~\ref{fig:blazar} (B)), and $C$ for color (Fig.~\ref{fig:blazar} (C)).
+The photometric and polarimetric datasets of Hiroshima University include six time-dependent variables: $q$, $u$, $\epsilon_q$, and $\epsilon_u$ for polarization (Fig.~\ref{fig:blazar} (A)), $I$ for intensity (Fig.~\ref{fig:blazar} (B)), and $C$ for color (Fig.~\ref{fig:blazar} (C)).
 %which are illustrated in the lower part of \autoref{fig:blazar}.
 % Astronomers use Julian Day for timestamps of observations. 
 % Our domain experts mainly use $t = \rm{Julian\,Day} - 2{,}450{,}000$ instead of the original Julian Day for simplicity.
-Linear polarization is represented by $Q$ and $U$, so-called \textit{Stokes} parameters.
+Linear polarization is represented by $Q$ and $U$, the so-called \textit{Stokes} parameters.
 $I$ denotes the observed intensity of the light.
 % i.e., the total of the luminosity of polarized components ($polarized\,flux$) and that of unpolarized components ($unpolarized\,flux$).
-We mainly use fractional values of $Q$ and $U$, $q = Q / I$ and $u = U / I$, 
-because $q$ and $u$ describe the behaviors of a blazar better than $Q$ and $U$~\cite{Uemura2016}.
-We call the plane composed of $q$ and $u$ \textit{Stokes plane}.
+We mainly use fractional values of $Q$ and $U$ where $q = Q / I$ and $u = U / I$, 
+because $q$ and $u$ describe the behaviors of a blazar more effectively than $Q$ and $U$~\cite{Uemura2016}.
+We call the plane composed of $q$ and $u$ the \textit{Stokes plane}.
 $\epsilon_q$ and $\epsilon_u$ act as the observation errors of $q$ and $u$, respectively.
 $C$ denotes the observed color of a blazar.
 The polarization degree ($PD$) and polarization angle ($PA$) derived from $q$ and $u$ are used to describe the optical polarization.
 $PD$ denotes a distance from the origin of the Stokes plane, 
-while $PA$ denotes a half of the polar angle in the Stoke plane, as illustrated in Fig.~\ref{fig:blazar}~(A).
+while $PA$ denotes one half of the polar angle in the Stoke plane, as illustrated in Fig.~\ref{fig:blazar}~(A).
 
 % HOW MANY SAMPLES PER DAY
 % THE TYPICAL SIZE OF ONE DATA
@@ -35,10 +35,10 @@ while $PA$ denotes a half of the polar angle in the Stoke plane, as illustrated 
 The observation frequency differs depending on observatories.
 The median observation interval of Hiroshima University is once every two days.
 % while that of the University of Arizona is once a day.
-Note that datasets include missing data due to the rotation and/or revolution of the Earth, bad atmospheric conditions, and so on.
+Note that the datasets have missing data due to the rotation and/or revolution of the Earth, bad atmospheric conditions, and so on.
 % Our primary datasets from Hiroshima University include about 300 to 400 data samples from the years 2008 to 2014. 
 In this paper, we process datasets from Hiroshima University for two blazars: \emph{BL Lac} and \emph{3C 454.3}. 
-The datasets for \emph{BL Lac} have 285 data samples from May 2008 to December 2011, while the one for \emph{3C 454.3} has 355 data samples from July 2008 to July 2014.
+The two datasets for \emph{BL Lac} contain 285 data samples in each dataset from May 2008 to December 2011, while the one for \emph{3C 454.3} contains 355 data samples from July 2008 to July 2014.
 % \begin{eqnarray}
 % PD(t) & = & \sqrt{q(t)^2+u(t)^2}, \label{equ:PD}
 % \label{eqn:PD}\\
@@ -59,7 +59,7 @@ The datasets for \emph{BL Lac} have 285 data samples from May 2008 to December 2
 \begin{figure}[tb]
     \centering
         \includegraphics[width=.99\linewidth]{vgtc_journal_latex/figures/blazar_final.pdf}
-    \caption{Observed blazar and its features. A blazar's central black hole emits a relativistic jet toward the Earth.
+    \caption{An observed blazar and its features. A blazar's central black hole emits a relativistic jet toward the Earth.
         The telescope observes its light in terms of (A) polarization, (B) intensity, and (C) color.}
     \label{fig:blazar}
 \end{figure}
@@ -71,34 +71,34 @@ The datasets for \emph{BL Lac} have 285 data samples from May 2008 to December 2
 %     \caption{Mapping of four domain goals, five time-series data analysis tasks, and four functions of TimeTubesX.}
 %     \label{fig:mapping}
 % \end{figure}
-We interviewed two astronomers at Hiroshima University, one at Stanford University, and four at Boston University to clarify domain goals and visualization tasks.
+We interviewed two astronomers at Hiroshima University, one at Stanford University, and four at Boston University to clarify the domain goals and visualization tasks.
 % which has nine blazar researchers.
 The main objective of these astronomers is 
-to quickly extract and analyze features in temporal variations of observed polarization, intensity, and color that are occurring in multiple time intervals. 
+to quickly extract and analyze features in temporal variations of observed polarization, intensity, and color that are occurring at multiple time intervals. 
 TimeTubesX effectively supports the following four domain goals:
 
 \noindent\textbf{G1--Enhance the reliability of blazar observations}. 
 % Due to the rotation of the Earth or bad atmospheric conditions, 
 Datasets always contain missing data and observation errors. 
-Astronomers need to assess what they found is plausible by analyzing the length of missing data periods and the size of errors.
+Astronomers need to assess whether what they have found is plausible by analyzing the length of missing data periods and the size of errors.
 
 \noindent\textbf{G2--Identify flares and rotations}. 
 Astronomers typically pay attention to time intervals with dynamic time variations, %features that dynamically change over a period of time. 
 % Examples include 
 such as flares and rotations.
 % such as flares that occur when the blazar is more energetic than usual and polarization rotations. %, which sometimes co-occur with dynamic changes of $I$ or $C$.
-The analysis of time intervals with such dynamic variations helps astronomers demystify the jet's structures.
+The analysis of time intervals with such dynamic variations helps astronomers demystify jets' structures.
 % For example, astronomers are interested in polarization variations at the time of flares.
 % These dynamic behaviors are important because they help astronomers demystify the jet's structures.
 
 \noindent\textbf{G3--Locate recurring blazar behaviors}.
 Besides well-known behaviors such as flares and rotations, 
 recurring patterns or common features can also exist.
-Thus, finding an interesting pattern or feature, 
+Thus, upon finding an interesting pattern or feature, 
 astronomers want to locate other time intervals similar to it.
 
 \noindent\textbf{G4--Explore time intervals validating a hypothesis of blazar behaviors}.
-Through their analyses or experiences, astronomers sometimes make a hypothesis, e.g., the flares of a blazar tend to co-occur with a specific polarization variation pattern. 
+Through their analyses or experiences, astronomers sometimes make a hypothesis (e.g., that the flares of a blazar tend to co-occur with a specific polarization variation pattern). 
 Astronomers need to address time intervals that might validate the hypothesis.
 
 % \begin{enumerate}[nosep, label=\textbf{G\arabic*}, align=parleft, leftmargin=*]
@@ -108,7 +108,7 @@ Astronomers need to address time intervals that might validate the hypothesis.
 %     \item Explore time intervals validating specific hypotheses.
 % \end{enumerate}
 
-To reach these goals, we have identified five visualization tasks that TimeTubesX should support:
+To attain these goals, we have identified five visualization tasks that TimeTubesX should support:
 
 \noindent\textbf{T1--Uncertainty-aware visualization.} 
 % Due to bad atmospheric conditions or the rotation of the Earth, datasets will always contain observation errors and missing data. 
@@ -120,13 +120,13 @@ Users should be able to perceive the reliability of data through visualizations.
 % Additionally, some astronomers want to extract features over several datasets.
 %On the other hand, some astronomers think there can exist a universal feature among multiple blazars.
 To compensate for missing data, 
-the system has to allow users to aggregate datasets for the same target from different sources.
-Analyses across datasets should also be supported to address features common to multiple targets.
+the system must allow users to aggregate datasets for the same target from different sources.
+Analyses across datasets should also be supported to address features that are common to multiple targets.
 
 \noindent\textbf{T3--Analysis of dynamic variations.} 
 % Astronomers typically want to identify time intervals with dynamic changes. %features that dynamically change over a period of time. 
 % Examples include flares, when the blazar is more energetic than usual, or polarization rotations, which sometimes co-occur with dynamic changes of $I$ or $C$.
-Time intervals with drastic changes in a short time period and those with unusual large time variations should be automatically extracted.
+Time intervals with drastic changes in a short time period and those with unusually large time variations should be automatically extracted.
 % Users want to investigate drastic temporal changes over a few days and large changes in values.
 % or a sudden change in the polarization angle.
 %The rotation of polarization is also interesting to them. 
@@ -139,10 +139,10 @@ Time intervals with drastic changes in a short time period and those with unusua
 % astronomers want to find other time intervals similar to the pattern. 
 % This requires the ability not only to identify ROIs/SOIs, but also to search for similar data points.
 % , either by the automatic feature detection or dynamic visual queries.
-Users should be able to identify regions/shapes of interest (\emph{ROI}s/\emph{SOI}s) and search for similar time variation patterns in other time intervals without complex query languages or parameter settings.
+Users should be able to identify regions/shapes of interest (\emph{ROI}s/\emph{SOI}s) and search for similar time variation patterns at other time intervals without using complex query languages or parameter settings.
 % The system should allow users to build a query for a ROI/SOI without complex query languages or parameter settings.
 
-\noindent\textbf{T5--Fuzzy search for time intervals similar to a ROI/SOI.}
+\noindent\textbf{T5--Fuzzy search for time intervals similar to a specific ROI/SOI.}
 %A prerequisite for similarity analysis between similar time intervals is the ability to detect similar intervals.
 %Astronomers are not only interested in finding highly similar time intervals, 
 % Astronomers are interested not only in exact matches between a ROI/SOI and similar time intervals, but also in fuzzy or approximate matches. 
@@ -164,11 +164,11 @@ The system should provide not only exact matches between a ROI/SOI and time inte
 % TimeTubesX also supports \textbf{T3}, \textbf{T4}, and \textbf{T5} by incorporating automatic feature extraction and dynamic visual querying.
 % , as we will explain in the rest of the paper.
 To support \textbf{G1}, our previous work, TimeTubes~\cite{Fujishiro2018}, has already supported \textbf{T1} and \textbf{T2}.
-Observations errors are encoded in the appearance of the 3D volumetric tube (\textbf{T1}).
+Observation errors are encoded in the appearance of the 3D volumetric tube (\textbf{T1}).
 An ellipsoidal snapshot and a white cruciform axis appear at each observation time stamp to distinguish missing data (\textbf{T1}).
-Analysis across datasets (\textbf{T2}) is supported by visual data fusion, which allows users not only to aggregate multiple datasets for the same blazar but also to effectively compare multiple datasets for the same/different blazar in a single visualization session.
+Analysis across datasets (\textbf{T2}) is supported by visual data fusion, which allows users not only to aggregate multiple datasets for the same blazar but also to effectively compare multiple datasets for the same or a different blazar in a single visualization session.
 In this paper, we mainly focus on feature and pattern detection methods to support the remaining tasks (\textbf{T3}, \textbf{T4}, \textbf{T5}).
-Consequently, we have designed an integrated visual analytics framework for blazar observations that supports all identified goals (\textbf{G1} - \textbf{G4}) and tasks (\textbf{T1} - \textbf{T5}).
+Consequently, we have designed an integrated visual analytics framework for blazar observations that supports all identified goals (\textbf{G1}-\textbf{G4}) and tasks (\textbf{T1}-\textbf{T5}).
 
 
 % So, they want to query ROI or test their hypothesis across datasets for multiple different blazars.

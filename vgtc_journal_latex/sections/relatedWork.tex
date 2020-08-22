@@ -4,7 +4,7 @@ This section reviews prior work in astronomical visualization and visual query s
 
 
 \subsection{Visualization for Astronomical Data}\label{sec:relatedAstronomy}
-Most astronomers work on analyzing signals from distant celestial bodies, as measured from the Earth~\cite{Kent2017}. 
+Most astronomers work on analyzing signals from distant celestial bodies measured from the Earth~\cite{Kent2017}. 
 %Astronomers make much account of observing and analyzing signals from distant celestial bodies
 %because they cannot travel just to see the bodies with their naked eyes~\cite{Kent2017}.
 % Li et al.~\cite{Li2007} visualize positional and data-inherent uncertainties of large-scale 3D astronomical simulations.
@@ -15,16 +15,16 @@ Most astronomers work on analyzing signals from distant celestial bodies, as mea
 % which realizes analysis across multiple different visualization, such as scatterplots and parallel coordinate plots.
 % Though many techniques have been developed for astronomical data, there are no other effective techniques for blazar observations, except for our early attempt~\cite{Fujishiro2018}.
 ESASky~\cite{Baines2017} and OpenSpace~\cite{Bock2020} provide views for parts of the sky that are integrated from multiple data sources.
-Almryde et al.~\cite{Almryde2016} visualize the temporal evolution of position, mass, and radial velocity of dark matter halos. 
+Almryde et al.~\cite{Almryde2016} visualize the temporal evolution of the position, mass, and radial velocity of dark matter halos. 
 % Various types of telescopes are used to observe the sky or particular celestial bodies in different wavelengths 
 % because visible light observation does not provide enough data to appreciate the nature of the universe.
 % observing only visible light is not enough to appreciate the real nature of the universe.
-Li et al.~\cite{Li2008} realize easy visual analysis across multi-wavelength datasets.
+Li et al.~\cite{Li2008} realize simple visual analysis across multi-wavelength datasets.
 IGM-Vis~\cite{Burchett2019} is a visual analytics tool for quasar sightline data.
 % propose 3D view for galaxies and quasar sightlines and 2D views for spectrum for the analysis of intergalactic medium and circumgalactic medium.
 Some approaches~\cite{Haroz2008, Li2008, Preston2016, McCurdy2019, Burchett2019} provide linked-view visualization systems that allow users to explore multiple types of visualizations for deeper analyses.
-Many techniques have been developed for analysis of astronomical data, 
-but typically, blazar researchers have been using animated scatterplots (see Section~\ref{sec:VisualEncoding}) 
+Many techniques have been developed for the analysis of astronomical data, 
+but typically, blazar researchers have used animated scatterplots (see Section~\ref{sec:VisualEncoding}) 
 because there were no other effective techniques for blazar observations prior to our early attempt, TimeTubes~\cite{Fujishiro2018}.
 % For more efficient data analysis with TimeTubesX, we introduce feature and pattern detection methods for blazar datasets, a part of which is an extension of our previous paper~\cite{Sawada2018}.
 
@@ -40,11 +40,11 @@ whereas query-by-sketch allows users to directly draw the shape of interest.
 \textsf{Query-by-example.\ }
 % QBE for univariate data
 %In these systems, users select an example from their data, that serves as the query for the rest of the dataset.% excerpt a part of time series for their query.
-Hochheiser and Shneiderman~\cite{Hochheiser2004} propose TimeSearcher, a visual exploration tool for time-series data. Users can select portions of timelines by the use of rectangular widgets~\cite{Buono2005, Buono2008}.
+Hochheiser and Shneiderman~\cite{Hochheiser2004} propose TimeSearcher, a visual exploration tool for time-series data. Users can select portions of timelines by using rectangular widgets~\cite{Buono2005, Buono2008}.
 % such as Timeboxes~\cite{Buono2005} and Search Boxes~\cite{Buono2008}.
 %where the users are allowed to select portions of timelines by putting boxes, termed Timeboxes~\cite{Buono2005} or Search Boxes~\cite{Buono2008}.
-Holz and Feiner~\cite{Holz2009} propose a relaxed selection technique for time intervals, through which users define the level of similarity either by the input speed or by spatial deviation from an original timeline.
-The idea of detecting the input speed was adopted by our sketching interface.
+Holz and Feiner~\cite{Holz2009} propose a relaxed selection technique for time intervals through which users define the level of similarity either by the input speed or by spatial deviation from an original timeline.
+The idea of detecting the input speed was adopted for our sketching interface.
 However, these interactions are geared only toward univariate time-series data and are not appropriate for our mD blazar data.
 %
 %to allow ones to select a time interval and to define the level of similarity simultaneously
@@ -56,24 +56,24 @@ Query-by-example methods for mD data have also been proposed.
 Martin and Ward~\cite{Martin2005} describe brushing techniques for visualizations,
 such as scatterplots matrices and parallel coordinate plots.
 Elmqvist et al. propose interactions for constructing visual queries with star plots~\cite{Elmqvist2007} and multiple scatterplots~\cite{Elmqvist2008}.
-Scribble query~\cite{Nielsen2016} introduces touch interaction for forming visual queries
-through parallel coordinate plots by scribbling axes. 
+Scribble query~\cite{Nielsen2016} allows users to form visual queries by scribbling axes of parallel coordinate plots.
+% introduces a touch interaction method for forming visual queries
+% through parallel coordinate plots by scribbling axes. 
 Several works have focused on unstructured mD datasets~\cite{Martin2005,Elmqvist2007,Nielsen2016}, 
 %The techniques in \cite{Martin2005}, \cite{Elmqvist2007}, and \cite{Nielsen2016} effectively work for unstructured mD datasets, 
-but they are not versatile enough for understanding correlations among our idiosyncratic variables (see Section~\ref{sec:BlazarData}), and they do not support queries for structured time-series data.
+but they are not versatile enough to examine correlations among our idiosyncratic variables (see Section~\ref{sec:BlazarData}), and they do not support queries for structured time-series data.
 The scatterplots by Martin and Ward~\cite{Martin2005} and Elmqvist et al.~\cite{Elmqvist2008} can be partially useful for structured data, but they cannot be applied to time-series data.
 
 % QBS
 \textsf{Query-by-sketch.\ } 
 %Users may sketch the shape of interest for their query.
-Early query-by-sketch examples include QuerySketch~\cite{Wattenberg2001} for temporal databases and QueryLines~\cite{Ryall2005} for multiple timelines. 
+Early examples of query-by-sketch tools include QuerySketch~\cite{Wattenberg2001} for temporal databases and QueryLines~\cite{Ryall2005} for multiple timelines. 
 %QuerySketch~\cite{Wattenberg2001} is a sketch-based visual query tool for a temporal database.
 %QueryLines~\cite{Ryall2005} allows the users to draw a query involving soft constraints and preferences.
-TimeSketch~\cite{Eichmann2015} supports pen and touch-based query specification but focuses only on univariate time-series data.
-
+TimeSketch~\cite{Eichmann2015} supports pen- and touch-based query specification but focuses only on univariate time-series data.
 % symbolic approximation
 %Query-by-sketch interfaces have to handle ambiguities of hand-drawn sketches. 
-To deal with the ambiguities of hand-drawn sketches, several systems discretize the query and datasets into symbolic or quantized representations~\cite{Muthumanickam2016,ruta2019sax}.
+To manage the ambiguities of hand-drawn sketches, several systems discretize the query and datasets into symbolic or quantized representations~\cite{Muthumanickam2016,ruta2019sax}.
 %The input query and time series are discretized into symbolic representations to cope with uncertainties of a hand-drawn sketch in \cite{Muthumanickam2016} and \cite{ruta2019sax}.
 %
 Alternatively, Correll and Gleicher~\cite{Correll2016} define invariants for sketches. % to deal with uncertainties of sketches. 
@@ -84,8 +84,8 @@ Both techniques target univariate time-series data.
 %
 Shao et al.~\cite{Shao2014} introduce sketch-based queries for large sets of scatterplots
 in which the system supports users with shadow-drawing suggestions. %, which we use as an inspiration for our fact-driven querying\autoref{sec:factDrivenQuerying}.
-The suggestions allow users to draw a pattern based on actual values, not on their imaginations.
-We use this idea as an inspiration for our fact-guided querying (see Section~\ref{sec:factDrivenQuerying}).
+The suggestions allow users to draw a pattern based on actual values rather than their imaginations.
+We use this idea as inspiration for our fact-guided querying (see Section~\ref{sec:factDrivenQuerying}).
 %users are allowed to draw a pattern with the help of shadow-drawing suggestions,
 %due to which the input sketch is not just a fiction by the users but based on fact.
 %It influences the concept of our fact-driven querying, as discussed in \autoref{sec:factDrivenQuerying}.
@@ -95,22 +95,22 @@ While these systems support querying structured mD data, they cannot be applied 
 Several sketch-based techniques for multi-scalar volume data allow users to select regions of a 3D object through an ordinary 2D painting tool.
 The techniques by Owada et al.~\cite{Owada2005} and Igarashi et al.~\cite{Igarashi2016} extract a plausible 3D region from the volume
 by following contours or isosurfaces, respectively.
-Tzeng et al.~\cite{Tzeng2003} present a method for specifying high-dimensional classification functions for the volume
-by brushing regions of interest and uninterest. % and those of uninterest.
+Tzeng et al.~\cite{Tzeng2003} present an method for specifying high-dimensional classification functions for the volume
+by brushing regions of interest. % and those of uninterest.
 BrainGazer~\cite{Bruckner2009} provides simple interactions for the selection of a region of interest in the volume
-by drag-and-drop functionality.
+using drag-and-drop functionality.
 % clicking on and dragging a 3D object. 
-These techniques target only multi-scalar volume data. 
+These techniques can only target multi-scalar volume data. 
 
-\textsf{Combination of query-by-example and query-by-sketch.\ }
-Query-by-example techniques do not address how to find the initial interesting data samples, 
+\textsf{Combinations of query-by-example and query-by-sketch.\ }
+Query-by-example techniques do not address how to find the initial data samples of interest, 
 % users have to first identify an interesting data point in their dataset,
-while query-by-sketch techniques must surmount the user-introduced uncertainties of sketches.
-Combination of both styles helps to resolve the trade-off, as addressed by 
+while query-by-sketch techniques must surmount the user-introduced ambiguities of sketches.
+Combining both styles helps to resolve this trade-off, as addressed by 
 Bernard et al.~\cite{Bernard2010} and Lee et al.~\cite{Lee2019}. 
-The system by Bernard et al.~\cite{Bernard2010} supports univariate time-series data, while the one by Lee et al.~\cite{Lee2019} supports unstructured time-series data.
+The system formulated by Bernard et al.~\cite{Bernard2010} supports univariate time-series data, while the one by Lee et al.~\cite{Lee2019} supports unstructured time-series data.
 % To get the best of both worlds, TimeTubesX supports automatic feature extraction as wells as query-by-example and query-by-sketch interactions.
-To get the best of both worlds, TimeTubesX supports both querying interactions.
+To get the best of both worlds, TimeTubesX supports both types of querying interactions.
 %
 %To compensate these shortcomings, 
 %we go together with both styles to build a new integrated feature extraction system 
