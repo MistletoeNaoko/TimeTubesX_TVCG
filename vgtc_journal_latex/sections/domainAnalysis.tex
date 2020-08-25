@@ -8,23 +8,23 @@ To reduce uncertainties due to missing observational data and observation errors
 TimeTubesX allows users to fuse multiple datasets for the same blazar from different observatories 
 through the automatic handling of potentially different definitions of observed variables~\cite{Fujishiro2018}.
 Thus, users can, for example, include data from Hiroshima University and the University of Arizona in the same visualization session. 
-TimeTubesX is designed to primarily process datasets acquired by the Hiroshima Astrophysical Science Center at Hiroshima University,
+TimeTubesX is designed to primarily process datasets acquired by Hiroshima Astrophysical Science Center at Hiroshima University,
 which uses a $1.5\mathrm{m}$ Kanata telescope. 
 %taking full care of discrepancy in the definition of variables~\cite{Fujishiro2018}.
 
 % Observation datasets
-The photometric and polarimetric datasets of Hiroshima University include six time-dependent variables: $q$, $u$, $\epsilon_q$, and $\epsilon_u$ for polarization (Fig.~\ref{fig:blazar} (A)), $I$ for intensity (Fig.~\ref{fig:blazar} (B)), and $C$ for color (Fig.~\ref{fig:blazar} (C)).
+The photometric and polarimetric datasets of Hiroshima University include six time-dependent variables: $q$, $u$, $\epsilon_q$, and $\epsilon_u$ for the observed polarization of the light (Fig.~\ref{fig:blazar} (A)), $I$ for the observed intensity (Fig.~\ref{fig:blazar} (B)), and $C$ for the observed color (Fig.~\ref{fig:blazar} (C)).
 %which are illustrated in the lower part of \autoref{fig:blazar}.
 % Astronomers use Julian Day for timestamps of observations. 
 % Our domain experts mainly use $t = \rm{Julian\,Day} - 2{,}450{,}000$ instead of the original Julian Day for simplicity.
 Linear polarization is represented by $Q$ and $U$, the so-called \textit{Stokes} parameters.
-$I$ denotes the observed intensity of the light.
+% $I$ denotes the observed intensity of the light.
 % i.e., the total of the luminosity of polarized components ($polarized\,flux$) and that of unpolarized components ($unpolarized\,flux$).
 We mainly use fractional values of $Q$ and $U$ where $q = Q / I$ and $u = U / I$, 
 because $q$ and $u$ describe the behaviors of a blazar more effectively than $Q$ and $U$~\cite{Uemura2016}.
 We call the plane composed of $q$ and $u$ the \textit{Stokes plane}.
 $\epsilon_q$ and $\epsilon_u$ act as the observation errors of $q$ and $u$, respectively.
-$C$ denotes the observed color of a blazar.
+% $C$ denotes the observed color of a blazar.
 The polarization degree ($PD$) and polarization angle ($PA$) derived from $q$ and $u$ are used to describe the optical polarization.
 $PD$ denotes a distance from the origin of the Stokes plane, 
 while $PA$ denotes one half of the polar angle in the Stoke plane, as illustrated in Fig.~\ref{fig:blazar}~(A).
@@ -74,7 +74,7 @@ The two datasets for \emph{BL Lac} contain 285 data samples in each dataset from
 We interviewed two astronomers at Hiroshima University, one at Stanford University, and four at Boston University to clarify the domain goals and visualization tasks.
 % which has nine blazar researchers.
 The main objective of these astronomers is 
-to quickly extract and analyze features in temporal variations of observed polarization, intensity, and color that are occurring at multiple time intervals. 
+to quickly extract and analyze features in temporal variations of the observed polarization, intensity, and color that are occurring at multiple time intervals. 
 TimeTubesX effectively supports the following four domain goals:
 
 \noindent\textbf{G1--Enhance the reliability of blazar observations}. 
@@ -108,7 +108,7 @@ Astronomers need to address time intervals that might validate the hypothesis.
 %     \item Explore time intervals validating specific hypotheses.
 % \end{enumerate}
 
-To attain these goals, we have identified five visualization tasks that TimeTubesX should support:
+To attain these four goals, we have identified five visualization tasks that TimeTubesX should support:
 
 \noindent\textbf{T1--Uncertainty-aware visualization.} 
 % Due to bad atmospheric conditions or the rotation of the Earth, datasets will always contain observation errors and missing data. 
@@ -165,10 +165,10 @@ The system should provide not only exact matches between a ROI/SOI and time inte
 % , as we will explain in the rest of the paper.
 To support \textbf{G1}, our previous work, TimeTubes~\cite{Fujishiro2018}, has already supported \textbf{T1} and \textbf{T2}.
 Observation errors are encoded in the appearance of the 3D volumetric tube (\textbf{T1}).
-An ellipsoidal snapshot and a white cruciform axis appear at each observation time stamp to distinguish missing data (\textbf{T1}).
+An ellipsoidal snapshot and a white cruciform axis appear at each observation timestamp to distinguish missing data (\textbf{T1}).
 Analysis across datasets (\textbf{T2}) is supported by visual data fusion, which allows users not only to aggregate multiple datasets for the same blazar but also to effectively compare multiple datasets for the same or a different blazar in a single visualization session.
-In this paper, we mainly focus on feature and pattern detection methods to support the remaining tasks (\textbf{T3}, \textbf{T4}, \textbf{T5}).
-Consequently, we have designed an integrated visual analytics framework for blazar observations that supports all identified goals (\textbf{G1}-\textbf{G4}) and tasks (\textbf{T1}-\textbf{T5}).
+In this paper, we mainly focus on feature and pattern detection methods to support the remaining three tasks (\textbf{T3}, \textbf{T4}, \textbf{T5}).
+Consequently, we have designed an integrated visual analytics framework for blazar observations that supports all identified goals (\textbf{G1}--\textbf{G4}) and tasks (\textbf{T1}--\textbf{T5}).
 
 
 % So, they want to query ROI or test their hypothesis across datasets for multiple different blazars.

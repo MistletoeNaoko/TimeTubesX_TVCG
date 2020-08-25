@@ -50,7 +50,7 @@ During the animation, individual observations are highlighted in red in order of
 
 Instead of animating multiple 2D scatterplots,
 TimeTubesX expresses blazar observations as a single 3D volumetric tube. 
-In the following part, we give a short overview of the \emph{TimeTubes view}, which was originally proposed in our previous work~\cite{Fujishiro2018}.
+In the following part, we give an overview of the \emph{TimeTubes view}, which was originally proposed in our previous work~\cite{Fujishiro2018}.
 % We call the view of the 3D volumetric tube \emph{TimeTubes view}.
 The TimeTubes view %, that is explained in Fig.~\ref{fig:howtoplot}, 
 allows users to see correlations and variations of variables over time at a glance, as illustrated in Fig.~\ref{fig:framework}~(E).
@@ -64,7 +64,7 @@ Therefore, the $x$--$y$ location of an ellipse indicates the polarization at a c
 To properly render a 3D tube, we set the value range of the Stokes plane in the TimeTubes view with reference to the standard deviations of $q$ and $u$ in the datasets. 
 In the current TimeTubes view, we empirically map a single day to a single voxel along the $z$ axis.
 %
-We colorize the ellipses according to $I(t)$ and $C(t)$ as based on a user-defined 2D colormap (Fig.~\ref{fig:howtoplot}~(b)). 
+We colorize the ellipses according to $I(t)$ and $C(t)$ based on a user-defined 2D colormap (Fig.~\ref{fig:howtoplot}~(b)). 
 The TimeTubes view connects neighboring ellipses in chronological order, using centripetal Catmull-Rom splines to form a 3D volumetric tube (Fig.~\ref{fig:howtoplot}~(c)). 
 To further reflect the reliability of the observations, the TimeTubes view offers an adjustable opacity transfer function.
 Multiple concentric tubes with different transparencies (i.e., higher opacities for inner tubes) compose a single tube that allows users to intuitively perceive the uncertainties of observations.
@@ -151,9 +151,9 @@ The distance distribution histogram in panel (B) helps users to further filter t
 % we use a histogram to provide an overview of the distribution of distances returned by the similarity search.
 % By adjusting the gray area on the histogram, users are allowed to alter the number of displayed results. 
 The timeline in panel (C) gives an overview of the temporal distribution of the results.
-Users are able to recognize groups of results sharing identical time points and temporal distribution features.
+Users are able to recognize groups of results sharing identical data samples and temporal distribution features.
 % The thumbnails of all relevant (i.e., non-filtered) results are shown in panel (E) to give users an intuitive overview of their query results.
-When selecting an individual thumbnail, TimeTubesX shows a detailed information on the corresponding result in panel (D), including exact time stamps and the distance between the query and the result.
+When selecting an individual thumbnail, TimeTubesX shows a detailed information on the corresponding result in panel (D), including exact timestamps and the distance between the query and the result.
 % The detailed information is helpful for users' deeper understanding of the extracted time interval.
 To re-utilize the query, compare multiple query results, and share the query and their results with other users, 
 TimeTubesX allows users to export and import queries and their results in the form of JSON files (a custom format for TimeTubesX).

@@ -6,7 +6,7 @@ TimeTubesX is open-source (\url{https://github.com/MistletoeNaoko/TimeTubesWeb})
 % the running system can be found at \url{https://timetubes.herokuapp.com/}.
 readers can try the running system using our synthetic data at \url{https://timetubes.herokuapp.com/}.
 
-We shared TimeTubesX with four domain experts, three of whom we interviewed for the domain analysis in Section 3.2: the second author of this paper (Astronomer 1), Astronomer 1’s former master course student (Astronomer 2), an assistant professor at Hiroshima University (Astronomer 3), and a postdoctoral researcher at Stanford University (Astronomer 4). Sections \ref{sec:correlate} and \ref{sec:anticorrelate} present two case studies by Astronomer 1, and Section \ref{sec:whatif} discusses the cause of the phenomena presented in Section \ref{sec:anticorrelate}. Section \ref{sec:feedback} reviews qualitative feedback from the four domain experts.
+We shared TimeTubesX with four domain experts, three of whom we interviewed for the domain analysis in Section~\ref{sec:domainGoalsandTasks}: the second author of this paper (Astronomer 1), Astronomer 1’s former master course student (Astronomer 2), an assistant professor at Hiroshima University (Astronomer 3), and a postdoctoral researcher at Stanford University (Astronomer 4). Sections \ref{sec:correlate} and \ref{sec:anticorrelate} present two case studies conducted by Astronomer 1, and Section \ref{sec:whatif} discusses the cause of the phenomena presented in Section \ref{sec:anticorrelate}. Section \ref{sec:feedback} reviews qualitative feedback from the four domain experts.
 % In this section, we present and discuss two real-world data analysis sessions and feedback from two domain experts at Hiroshima University, who are a co-author of this paper and his former master course student, respectively.
 % In this section, first, we present and discuss two real-world data analysis sessions using the blazar datasets described in~\cite{Gaur2014} that were performed by a domain expert at Hiroshima University, who is a co-author of this paper.
 % And then, we report feedback from two domain experts, 
@@ -15,11 +15,12 @@ To examine the magnetic field structures in the jets,
 astronomers analyze polarimetric observations. 
 Through the analysis of correlations between polarization and intensity, 
 they validate multiple hypotheses for the increase in the intensity ($I$). 
-The two case studies were performed by Astronomer 1 using the datasets for the blazar \emph{BL Lac}. 
-It was previously empirically noted in \cite{Gaur2014} that the $I$ of \emph{BL Lac} tends to anticorrelate with the polarization degree ($PD$) during a certain period.
+In the two case studies, Astronomer 1 used the datasets for the blazar \emph{BL Lac}.
+% The two case studies were performed by Astronomer 1 using the datasets for the blazar \emph{BL Lac}. 
+It was empirically noted in \cite{Gaur2014} that the $I$ of \emph{BL Lac} tends to anticorrelate with the polarization degree ($PD$) during a certain period.
 % It was previously empirically noted in \cite{Gaur2014} that the intensity ($I$) of \emph{BL Lac} tends to anti-correlate with the polarization degree ($PD$) during a certain period.
 % The observation datasets for \emph{BL Lac} include 285 observations over a period of about 3.5 years.
-On a MacBook Pro 2017 with a 3.5 GHz Intel Core i7 and a 16 GB RAM, it took 1{,}193 ms and 1{,}236 ms to obtain the results outlined in Section~\ref{sec:correlate} and Section~\ref{sec:anticorrelate}, respectively.
+On a MacBook Pro 2017 with a 3.5 GHz Intel Core i7 and a 16 GB RAM, it took 1{,}193 ms and 1{,}236 ms to obtain the results outlined in Sections~\ref{sec:correlate} and \ref{sec:anticorrelate}, respectively.
 %
 
 % \subsection{Implementation and performance}
@@ -117,7 +118,7 @@ This section explains how astronomers can identify what generally contributes to
 
 Astronomers expect that $PD$ variation in a blazar is due to one of the two following hypotheses:
 \begin{enumerate}[nosep, label=\textsl{Hypothesis \arabic*}:, ref=\textsl{Hypothesis \arabic*}, align=parleft, leftmargin=*]
-    \item \textsl{$total\,flux$ increases (decreases) due to the increase (decrease) in $unpolarized\,flux$}; or  \label{scenario1}
+    \item \textsl{$total\,flux$ increases (decreases) due to the increase (decrease) in $unpolarized\,flux$};  \label{scenario1}
     \item \textsl{There are two polarized components, and they are perpendicular to each other}. \label{scenario2}
 \end{enumerate}
 Note that $PD$ can be derived from the amount of $flux$: $PD = \frac{polarized\,flux}{total\,flux}$,
@@ -165,7 +166,7 @@ He found similar behavior at all short time intervals in the period $[4{,}750, 4
 Thus, he finally concluded that the negative correlation of $I$ and $PD$ in the period is not due to the increase in $unpolarized flux$ (\ref{scenario1}) but is instead due to the presence of two polarized components (\ref{scenario2}). 
 % the decrease in $PD$ of a different polarized component (\ref{scenario2}). 
 
-Overall, TimeTubesX greatly facilitated this detailed visual exploration of blazar data. This allowed the domain expert to examine many small time intervals with specific features, which would have been too laborious with previous methods.
+Overall, TimeTubesX greatly facilitated this detailed visual exploration of blazar data. This allowed Astronomer 1 to examine many small time intervals with specific features, which would have been too laborious with previous methods.
 %, allowing him to examine time intervals with a specific feature
 %and contributes to more detailed analysis which was too laborious with the conventional methods.
 
@@ -177,7 +178,7 @@ Astronomer 2 found that the rotation detection was useful.
 With TimeTubesX's rotation detection functionality, 
 he was able to find three unknown rotation behaviors with a shifted rotation center in the blazar \emph{3C 454.3}~\cite{Huang2019}. 
 Astronomers 1, 3, and 4 mentioned that the QBS method was especially useful and helpful for validating their high-level hypotheses, as demonstrated in Sections~\ref{sec:correlate} and \ref{sec:anticorrelate}. 
-In particular, Astronomers 3 and 4 said that dynamic visual querying could be a powerful tool to examine jet physical processes and behaviors of plasma and magnetic fields under extreme conditions because the method can efficiently address arbitrary variation patterns of polarization, intensity, and color over time. Astronomers 1 and 3 noticed TimeTubesX’s potential for data mining. In particular, astronomer 3 saw massive potential for mining existing and upcoming large polarization surveys, while Astronomer 1 found that using TimeTubesX enables astronomers to identify interesting features in short time intervals to an extent that cannot be achieved with conventional methods due to too many short time intervals in a long-term dataset. Furthermore, fact-guided querying was impressive to him because it allows astronomers to refine their sketches based on actual extracted patterns.
+In particular, Astronomers 3 and 4 said that dynamic visual querying could be a powerful tool to examine jet physical processes and behaviors of plasma and magnetic fields under extreme conditions because the method can efficiently address arbitrary variation patterns of polarization, intensity, and color over time. Astronomers 1 and 3 noticed TimeTubesX’s potential for data mining. In particular, Astronomer 3 saw massive potential for mining existing and upcoming large polarization surveys, while Astronomer 1 found that using TimeTubesX will enable astronomers to identify interesting features in short time intervals to an extent that cannot be achieved with conventional methods due to too many short time intervals in a long-term dataset. Furthermore, fact-guided querying was impressive to him because it allows astronomers to refine their sketches based on actual extracted patterns.
 
 % In addition to the case studies (Sections~\ref{sec:correlate} and \ref{sec:anticorrelate}),
 % our domain experts were able to find three rotation behaviors in the blazar \emph{3C 454.3} that had not yet been described in the literature. 

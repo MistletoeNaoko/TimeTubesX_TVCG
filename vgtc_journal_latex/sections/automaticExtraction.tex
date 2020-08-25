@@ -18,7 +18,7 @@ The node (A) in Fig.~\ref{fig:framework} shows example TimeTubes views for an an
 
 \subsection{Anomaly Detection}\label{sec:anomalyDetection}
 It is challenging for astronomers to manually identify time variations across multiple variables. 
-We define time points with drastic temporal changes in polarization, intensity, and color as \textit{anomalies}.
+We define data samples with drastic temporal changes in polarization, intensity, and color as \textit{anomalies}.
 Tracking anomalies can result in identifying unusual time variations or presages of well-known behaviors, such as flares or rotations,
 because observable blazar behaviors show a tendency to include these drastic variations.
 
@@ -81,11 +81,12 @@ because astronomers are equally interested in small, individual flares and large
     \centering
     \includegraphics[width=\linewidth]{vgtc_journal_latex/figures/rotationDetectiondemodataResultsOR.png}\\
     \footnotesize{\sf(a) Previous rotation detection method~\cite{Fujishiro2018}.}\\
+    \vspace{5px}
     \includegraphics[width=.8\linewidth]{vgtc_journal_latex/figures/rotationDetectiondemodataResults.png}\\
     \footnotesize{\sf(b) Our improved method.}
     \caption{Rotation detection results for our synthetic dataset in Fig.~\ref{fig:synthesisData}. 
         The outline color corresponds to the color in Fig.~\ref{fig:synthesisData}~(b).
-        Our previous method detected narrow patterns and noise (blue), 
+        Our previous method detected narrow/rough-edged patterns and noise (blue), 
         whereas our improved method detected only large rotations (green).}
     \label{fig:rotationResults}
 \end{figure}
@@ -93,7 +94,7 @@ because astronomers are equally interested in small, individual flares and large
 \textsf{Experimental results.\ } We applied the flare detection method to our synthetic data.
 We set $K$ and $h$ to 3 and 1, respectively.
 Fig.~\ref{fig:flareDetection} presents the flare detection results.
-The four time points were detected as flares,
+The four data samples were detected as flares,
 which completely coincide with the deliberately generated peaks that are highlighted in orange in Fig.~\ref{fig:synthesisData}~(a).
 
 \subsection{Rotation Detection}\label{sec:rotationDetection}

@@ -109,7 +109,7 @@ Second, they sketch a time variation pattern on a 2D sketch pad UI (3),
 where the stroke is shown in black and its width is shown in blue.
 % After drawing, our system automatically converts the sketch into a Cubic Bezier curve and beautifies the input stroke to remove undesired artifacts due to shaky input. 
 % After drawing is completed, 
-Afterward, our system automatically beautifies the input stroke by fitting it to a cubic Bezier curve with as few segments as possible by using the \texttt{simplify} method in Paper.js~\cite{paper_framework}.
+Afterward, our system automatically beautifies the input stroke by fitting it to a cubic Bezier curve with as few segments as possible by using the \texttt{\small simplify} method in Paper.js~\cite{paper_framework}.
 After their initial drawing, users can further adjust the sketch
 by adding, removing, or moving control points or by changing the stroke width.
 Users are also allowed to assign filtering constraints to each of the control points on the stroke, as shown in part (4).
@@ -267,14 +267,14 @@ Users can set the window size and the step size of the sliding window and also s
 % The warping window size determines the largest allowed temporal shift 
 in the process of finding the best alignment between the query and time series.
 Users can specify these parameters at the bottom of the query specification panel in Fig.~\ref{fig:UIFeatureExtraction}~(A).
-Note that multiple time intervals with different lengths but that include the same time points can be presented in the extraction results (see Fig.~\ref{fig:QBEDemodata} and Fig.~\ref{fig:QBSDemodata}~(c) and (d)). %because of the use of a sliding window approach.
+Note that multiple time intervals with different lengths but that include the same data samples can be presented in the extraction results (see Fig.~\ref{fig:QBEDemodata} and Fig.~\ref{fig:QBSDemodata}~(c) and (d)). %because of the use of a sliding window approach.
 The timelines in Fig.~\ref{fig:UIFeatureExtraction}~(C) help users recognize such time intervals. 
 % Users can identify the groups of the extraction result by giving a glance at the timeline.
 
 Normalization and polar coordinates options enable a fuzzy pattern search.
 %The Normalization option and polar coordinates option realize fuzzy pattern search.
 The normalization option instructs the system to normalize a query and time intervals into the range of $[0, 1]$.
-Subsequently, the pattern search places great significance on the \emph{shape} of the time variations, whereas the actual value ranges will be ignored.
+Subsequently, the pattern search places great significance on the shape of the time variations, whereas the actual value ranges will be ignored.
 With the polar coordinates option, 
 $q(t)$ and $u(t)$ are converted into polar coordinates ($r-\theta$ domain) before computing similarities.
 Subsequently, the pattern search with the normalization and polar coordinates options will also be able to extract patterns rotating around the origin of the Stoke plane.
@@ -310,7 +310,7 @@ but ambiguities of hand-drawn sketches may sometimes lead to unexpected results,
 If the extraction results for the query in (a) sufficiently represent users' intentions, one of the results can be used as an input to refine the results of the next visual query.
 %When we find time intervals which sufficiently validate our intention, we can use the one of the results for yet another query of the visual query.
 % For the query in (b), 
-We chose the top left result of \ref{fig:QBSDemodata}~(c) and used it as an input for our QBS method, as shown in (b). 
+We chose the top left result of Fig.~\ref{fig:QBSDemodata}~(c) and used it as an input for our QBS method, as shown in (b). 
 %and converted it for a query in QBS.
 The sketch pad plane in (b) coincides with the Stokes plane.
 Thereafter, we ran QBS using the same parameter settings as the example in Section~\ref{sec:QBS}.
