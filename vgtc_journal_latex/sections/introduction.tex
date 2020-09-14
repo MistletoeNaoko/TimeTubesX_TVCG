@@ -4,114 +4,33 @@
 \section{Introduction}
 \label{sec:introduction}
 \fi
-% Blazar are an important topic of researches in astronomy and high-energy astrophysics. 
 \IEEEPARstart{B}{lazars} are important to the studies of astronomy and high-energy astrophysics. 
 They are in a class of extremely bright galactic nuclei called active galactic nuclei (AGN) that shoot out a stream of particles from their center~\cite{Antonucci1993a}. 
 A relativistic jet is angled directly toward the Earth from a central black hole of a blazar (see Fig.~\ref{fig:blazar}).
-However, relatively little is known about the intricate physics of these jets' structures. %about these structures.
-% To demystify the intricate physics of the jet's structures,
+However, relatively little is known about the intricate physics of these jets' structures.
 Astronomers pay careful attention to blazars
 because the jet radiation of blazars is more amplified than that of other AGN.
-% Astronomers pay careful attentions to blazars
-%Blazars are a class of extremely bright galactic nuclei with a supermassive black hole at their center~\cite{Antonucci1993a}. 
-%They emit a relativistic jet directly angled toward the Earth, 
-%as illustrated in \autoref{fig:blazar}.
-%The astronomers pay careful attentions to blazars 
-%because the physics of the jet is mysterious even nowadays.
-% To predict the effects of the magnetic field on the jet,
 To demystify the jets' structures,
 astronomers need to analyze correlations and time variations in photometric and polarimetric observations of the emitted light.
-% of observed polarization, intensity, and color of the emitted light.
-% However, it is challenging for them to manually identify recurring patterns or similar time intervals from long-term, multi-dimensional observations.
-%for effectively understanding dynamic variations in and feature causality among multiple variables.
-%Our previous application provides visual data fusion for datasets from multiple observatories and diverse interactions
-%to accomplish more effective data analysis~\cite{Fujishiro2018}.
-%To identify known blazar behaviors or recurring patterns, astronomers need to meticulously analyze their high-dimensional data.
 For instance, a light burst (i.e., \textit{flare}) is one of the most distinctive behaviors of blazars~\cite{Bednarek1999, Atoyan2001}.
-Identifying flares requires astronomers to scrutinize correlations of the emitted light's intensity with polarization and/or color, because looking at the time variation of the intensity alone is insufficient. %always varies finely.
-%
+Identifying flares requires astronomers to scrutinize correlations of the emitted light's intensity with polarization and/or color, because looking at the time variation of the intensity alone is insufficient.
 In addition to flares, some astronomers are interested in the polarization direction of light and whether it rotates~\cite{Marscher2008, Uemura2017}.
-%In addition to flares, some astronomers reported that the polarization direction of the light sometimes rotates~\cite{Marscher2008, Uemura2017}.
 It is a controversial question in astronomy whether such \textit{rotations} are real or due to random variations of polarization.
 To verify polarization rotations, correlations of the polarization with the intensity and/or the color are crucial.
-% Moreover, astronomers would like to locate time intervals with common features in time variations.
 Moreover, astronomers would like to locate time intervals with common features in  time variations
 to understand what happens inside the jet.
 However, it is an overwhelming process for them to manually examine all time intervals in long-term, multi-dimensional datasets in order to detect these significant patterns and validate hypotheses.
-%those including flares/rotations and validating a specific hypothesis.
 
 To support these exploration challenges, 
 we have developed \textit{TimeTubesX}, a new visual analytics environment for blazar observations. 
-%
 This novel system extends our previous visualization scheme, called \textit{TimeTubes}~\cite{Fujishiro2018}, 
 which allows users to interactively explore multi-dimensional, time-dependent observation datasets of blazars in a unique 3D tube view and to combine datasets from multiple observatories into a single visualization session termed \emph{visual data fusion}.
-%, which focused on visualizing blazar observations in a unique 3D view.
-%
-%that integrates our previous TimeTubes view.
-%Previously, we proposed \textit{TimeTubes}~\cite{Fujishiro2018}, a unique 3D visualization for blazar observations that allowed users to interactively explore their high-dimensional datasets more intuitively, and to combine datasets from multiple observatories into a single visualization session.
-%on top of the previous TimeTubes.
 In TimeTubesX, we place more focus on visual analysis and automated and semi-automated approaches for feature and pattern detection.
-%We have developed advanced feature extraction mechanisms for TimeTubesX, consisting of automatic and interactive approaches.
 The automatic feature extraction methods, which are in part an extension of our previous work~\cite{Sawada2018}, detect time intervals corresponding to well-known blazar behaviors, such as flares and rotations.
-%with reference to the astronomers' reports,
 The dynamic visual querying methods, on the other hand, are useful for analysis and detection of recurring patterns that have not yet been explored in detail. 
 
-% This paper extends our previous short paper about the automatic feature extraction for blazar observations~\cite{Sawada2018}, but we have significantly improved our detection algorithms. 
-% The primary contributions of this paper are three-fold. 
 Our first contribution is a detailed goal and task analysis performed with domain experts to design a visual analytics framework for blazar observations. 
 Subsequently, we have designed and implemented TimeTubesX as a web-based and open-source system. 
 Our second contribution lies in powerful automatic feature extraction methods for well-known blazar behaviors and an intuitive visual query platform for multi-dimensional, time-dependent data.
 Finally, as our third contribution, we demonstrate the usefulness of TimeTubesX through experiments with a synthetic dataset, real data analyses, and feedback from domain experts.
 We envision that our visual query mechanisms could be applied to multi-dimensional, time-series datasets in other domains to help users identify recurring patterns or similar time intervals.
-% \begin{itemize}
-%     \item %Implementation of a new web-based visual analysis environment,termed TimeTubesX, for blazar observations based on analysis ofspecific sets of domain goals and involved tasks.
-%     A detailed goal and task analysis performed with our domain experts to design a visual analysis framework for blazar observations. 
-%     Subsequently, we have designed and implemented TimeTubesX as a web-based and open-source system. 
-%     \item Powerful automatic feature extraction methods for well-known blazar behaviors and an intuitive visual query platform for time-dependent, multi-dimensional data.
-%     \item A demonstration of the usefulness of TimeTubesX based on a real data analysis by a domain expert.
-% \end{itemize}
-%We fully improved the detection algorithms.
-
-% We first review related work
-% in \autoref{sec:relatedWork}, before describing our target data and domain goals and tasks in \autoref{sec:domainAnalysis}.
-% \autoref{sec:systemDesign} introduces the system design of TimeTubesX.
-% \autoref{sec:automaticExtraction}, \autoref{sec:visualQuery}, and \autoref{sec:otherFunctions} present details on our feature and pattern detection methods.
-% We demonstrate the effectiveness of the proposed intuitive feature extraction through an evaluation case in \autoref{sec:evaluation}.
-% In \autoref{sec:discussion}, we discuss feedback from domain experts and limitations of TimeTubesX.
-% We conclude this paper in \autoref{sec:conclusion}.
-
-
-
-% For example, the black hole ejects a jet almost at the speed of light, 
-% but what accelerates it is not clear yet.
-
-% if they look over animated scatterplots, 
-% which have been commonly used in the astrophysical community.
-
-% Regarding the behaviors of blazars, there are a lot of mysterious parts. 
-% When the relativistic jet in a blazar forms a burst, the light from a blazar gets highly luminous, that is called a flare. 
-% Flare is one of the most characteristic behaviors. 
-% Some astronomers report that the polarization direction of the light from blazars sometimes rotates. 
-% However, it is controversial in astronomy whether the rotations are real ones or fake ones caused by random variations of polarization.
-% To verify polarization rotations, astronomers need to scrutinize correlations among other observation variables. 
-% On the other hand, there can exist undiscovered phenomena of blazars. 
-% It is significant to explore recurring patterns of time variations or correlations among variables. 
-% Nevertheless, deliberate analysis across multiple variables is indispensable.
-% To address these difficulties, we introduce a novel feature extraction for blazar observations.
-% It supports two types of feature extraction: Automatic extraction and visual query. 
-% The automatic extraction can squeeze only observable time intervals from (multiple) long-term observations, 
-% whereas the visual query can find time intervals similar to a region of interest (ROI) or shape of interest (POI). 
-
-% When the relativistic jet in a blazar forms a burst, the light from a blazar gets highly luminous, that is called a flare. 
-
-% In other words, there are too many peaks of the intensity to identify notable flares 
-% without regard for correlations between the intensity and other parameters.
-
-% It takes time to visit all time intervals to find flares or rotations and inspect correlations among the other parameters.
-
-% this paper presents a feature extraction for blazar observations as an advanced function of TimeTubes, 
-% which offers the astronomers time intervals including known blazar phenomena, such as flares and rotations, 
-% and those similar to a region or shape of interest.
-% The feature extraction provides two approaches: automatic and interactive.
-
-%about visualization techniques for astronomical data and feature extraction techniques 
